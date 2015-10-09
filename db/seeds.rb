@@ -15,3 +15,12 @@ User.create(name: "David",
             photo_url: "http://www.glaucus.org.uk/Sheep0007.jpg",
             type_of_user: "friend"
             )
+
+Event.create(
+              start_time: '10-09-2015 17:00',
+              end_time: '10-09-2015 19:00',
+              event_url: 'google.com',
+              event_address: 'google.com',
+              event_city: 'chicago',
+              event_zip: '60614',
+              host: 'DBC')
