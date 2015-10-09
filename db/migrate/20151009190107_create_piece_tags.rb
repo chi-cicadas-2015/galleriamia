@@ -1,7 +1,6 @@
 class CreatePieceTags < ActiveRecord::Migration
   def change
     create_table :piece_tags do |t|
-
       t.integer :piece_id
       t.integer :tag_id
 
