@@ -24,8 +24,11 @@ ActiveRecord::Schema.define(version: 20151009015053) do
     t.string   "avatar_url"
     t.string   "photo_url"
     t.string   "type_of_user"
+    t.integer  "artist_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  add_index "users", ["artist_id"], name: "index_users_on_artist_id", using: :btree
 
 end
