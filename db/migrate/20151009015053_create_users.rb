@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :statement
       t.string :avatar_url
       t.string :photo_url
-      t.string :type
+      t.string :type_of_user
 
       t.timestamps null: false
     end

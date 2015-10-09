@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20151009015053) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "statement"
+    t.string   "avatar_url"
+    t.string   "photo_url"
+    t.string   "type_of_user"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
