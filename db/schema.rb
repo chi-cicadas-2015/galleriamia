@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009180740) do
+ActiveRecord::Schema.define(version: 20151009190216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collection_pieces", force: :cascade do |t|
+    t.integer  "collection_id"
+    t.integer  "piece_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "collection_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "collection_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "collections", force: :cascade do |t|
     t.integer  "user_id"
@@ -47,6 +61,30 @@ ActiveRecord::Schema.define(version: 20151009180740) do
   create_table "friends", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
+  end
+
+  create_table "piece_tags", force: :cascade do |t|
+    t.integer  "piece_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pieces", force: :cascade do |t|
+    t.string   "title"
+    t.string   "size"
+    t.string   "medium"
+    t.string   "image_url_thumb"
+    t.string   "url_full"
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
