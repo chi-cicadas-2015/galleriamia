@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
     target = User.find(friend_target.id)
     friend = Friend.new(user_id: self.id, friend_id: target.id)
     friend.save
+
+    # target.followers << friend
+
     target.followers << self # without this, I can't get the user.followers to do what I want,
                              # This however, duplicates the save and this is the "nil" save.
   end
