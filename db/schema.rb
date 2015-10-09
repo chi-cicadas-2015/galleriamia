@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009015053) do
+ActiveRecord::Schema.define(version: 20151009144910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -24,11 +29,8 @@ ActiveRecord::Schema.define(version: 20151009015053) do
     t.string   "avatar_url"
     t.string   "photo_url"
     t.string   "type_of_user"
-    t.integer  "artist_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
-
-  add_index "users", ["artist_id"], name: "index_users_on_artist_id", using: :btree
 
 end

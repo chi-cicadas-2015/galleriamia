@@ -9,7 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :photo_url
       t.string :type_of_user
 
-      t.references :artist, index: true
+      # t.references :artist, index: true
+      # t.references :follower_id, index: true # this might have to happen?
 
       t.timestamps null: false
     end
