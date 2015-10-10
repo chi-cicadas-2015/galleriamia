@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.all
-  end
-
   def new
     @user = User.new
   end
@@ -12,14 +8,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path
+      flash[:message] = "Your account was saved successfully"
+      redirect_to artists_path
     else
-      @error_message = "Please fill out each form to sign up."
+      @errors = @user.errors.full_messages
       render 'new'
     end
   end
 
+  private
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
+
 end

@@ -1,0 +1,13 @@
+<div class="container">
+
+  <div class="artist-header">
+    <h1><%=@artist.name%></h1>
+  </div>
+
+  <% @collections.each do |collection| %>
+    <div class="collection-container">
+      <a href="<%=user_collection_pieces_path(collection.id, @artist.id)%>"><%= collection.name %></a>
+    </div>
+  <% end %>
+
+</div>
