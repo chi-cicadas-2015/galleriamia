@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  get '/artists', to: 'artists#index'
-  get '/artists/:id', to: 'artists#show', as: 'artist'
+  get '/artists' => 'artists#index'
+  get '/artists/:id' => 'artists#show', as: 'artist'
+
+  get "/login" => "sessions#new", as: "login"
+  post "/login" => "sessions#create"
+  get "/logout" => "sessions#destroy"
 end

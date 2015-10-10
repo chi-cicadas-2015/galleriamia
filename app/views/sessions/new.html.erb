@@ -1,0 +1,30 @@
+<div>
+  <div>
+    <%= form_for :session do |f| %>
+
+      <div>
+        <%= f.label :email, "Email" %><br>
+        <%= f.email_field :email %>
+      </div>
+
+      <div>
+        <%= f.label :password, "Password" %><br>
+        <%= f.password_field :password %>
+      </div>
+
+      <div>
+        <%= f.submit %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <div>
+    <% if @error_message %>
+      <div>
+        <%= @error_message %>
+      </div>
+    <% end %>
+  </div>
+</div>
