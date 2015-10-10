@@ -1,9 +1,0 @@
-<div class="container">
-
-  <% @users.each do |user| %>
-    <div class="artist-container">
-      <h3><a href="<%=user_path(user.id)%>"><%= user.name %></a></h3>
-    </div>
-  <% end %>
-
-</div>
