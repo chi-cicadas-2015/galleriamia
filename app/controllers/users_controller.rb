@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path
     else
-      @error_message = "Please fill out each form to sign up."
+      @errors
       render 'new'
     end
   end
