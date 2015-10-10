@@ -1,6 +1,16 @@
-<div>
-  <div>
+<div class="container">
+
+  <% if @errors %>
+    <ul class="errors">
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="new-user-form">
     <%= form_for :user, url: users_path, :html => { :mulitpart => true } do |f| %>
+
       <div>
         <%= f.label :name, "Name" %><br>
         <%= f.text_field :name %>
@@ -24,14 +34,6 @@
         <%= f.submit %>
       </div>
 
-    <% end %>
-  </div>
-
-  <div>
-    <% if @error_message %>
-      <div>
-        <%= @error_message %>
-      </div>
     <% end %>
   </div>
 

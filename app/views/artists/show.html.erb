@@ -1,9 +1,7 @@
 <div class="container">
-  <h1>the user's show page</h1>
 
-  <div>
-    <%= @user.name %><br>
-    <%= image_tag @user.avatar.url(:thumb) %>
+  <div class="artist-header">
+    <h1><%=@artist.name%></h1>
   </div>
 
   <% @collections.each do |collection| %>
