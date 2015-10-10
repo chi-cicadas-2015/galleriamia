@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to users_path
+      redirect_to user_path(@user)
     else
       @error_message = "Please fill in all the fields to log in."
       render 'new'

@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
   has_many :events, through: :event_users
   has_many :collections
   has_secure_password
+
+  has_attached_file :avatar,
+                    :styles => { :thumb => "100x100>",
+                                 :large => "300x300>"}
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 end
