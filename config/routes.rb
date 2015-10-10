@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  get "login" => "sessions#new", as: "login"
+  post "login" => "sessions#create"
+  get "logout" => "sessions#destroy"
+
 end
