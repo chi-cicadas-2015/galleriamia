@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     end
     resources :events
   end
+
+  get '/artists', to: 'artists#index'
+  get '/artists/:id', to: 'artists#show', as: 'artist'
 end
