@@ -8,9 +8,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path
+      flash[:message] = "Your account was saved successfully"
+      redirect_to artists_path
     else
-      @errors
+      @errors = @user.errors.full_messages
       render 'new'
     end
   end

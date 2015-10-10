@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to users_path
+      redirect_to artists_path
     else
-      @error_message = "Please fill in all the fields to log in."
+      @errors = @user.errors.full_messages
       render 'new'
     end
   end

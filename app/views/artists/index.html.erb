@@ -1,5 +1,9 @@
 <div class="container">
 
+  <% if flash[:message] %>
+    <div class="message"><%= h flash[:message] %></div>
+  <% end %>
+
   <% @artists.each do |artist| %>
     <div class="artist-container">
       <h3><a href="<%=artist_path(artist.id)%>"><%= artist.name %></a></h3>

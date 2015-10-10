@@ -1,5 +1,14 @@
-<div>
-  <div>
+<div class="container">
+
+  <% if @errors %>
+    <ul class="errors">
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="signup-form">
     <%= form_for :session do |f| %>
 
       <div>
@@ -17,14 +26,6 @@
       </div>
 
     <% end %>
-
   </div>
 
-  <div>
-    <% if @error_message %>
-      <div>
-        <%= @error_message %>
-      </div>
-    <% end %>
-  </div>
 </div>
