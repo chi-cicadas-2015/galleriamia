@@ -1,0 +1,13 @@
+<div class="container">
+
+  <div class="artist-header">
+    <h1><%=@user.name%></h1>
+  </div>
+
+  <% @collections.each do |collection| %>
+    <div class="collection-container">
+      <%= collection.name %>
+    </div>
+  <% end %>
+
+</div>
