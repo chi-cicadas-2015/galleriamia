@@ -8,7 +8,7 @@
 
   <% @collections.each do |collection| %>
     <div class="collection-container">
-      <a href="<%=user_collection_pieces_path(collection.id, @artist.id)%>"><%= collection.name %></a>
+      <%= collection.name %>
     </div>
   <% end %>
 
