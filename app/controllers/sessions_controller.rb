@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    flash[:message] = "Sign in successful"
   end
 
   def create
@@ -17,7 +18,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to login_path
+    flash[:message] = "Sign out successful"
+    redirect_to artists_path
   end
 
 end
