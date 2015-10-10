@@ -8,7 +8,6 @@ class CreatePieces < ActiveRecord::Migration
       t.string :url_full
       t.string :description
 
-
       t.timestamps null: false
     end
   end

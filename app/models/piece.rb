@@ -1,4 +1,6 @@
 class Piece < ActiveRecord::Base
+  belongs_to :artist, class_name: User
+
   has_many :collection_pieces
   has_many :collections, through: :collection_pieces
 
