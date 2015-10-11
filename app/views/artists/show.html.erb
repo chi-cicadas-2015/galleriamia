@@ -26,10 +26,12 @@
                <% end %>
              </div>
              <div class="collapsible-body">
-               <% collection.pieces.each do |piece| %>
-                 <%= image_tag piece.photo.url(:thumb) %>
-               <% end %>
-             </div>
+              <p>
+                <% collection.pieces.each do |piece| %>
+                  <%= link_to image_tag(piece.photo.url(:thumb)), user_collection_piece_path(@artist.id, collection.id, piece.id) %>
+                <% end %>
+              </p>
+           </div>
           </li>
         <% end %>
       </ul>

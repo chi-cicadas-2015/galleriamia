@@ -1,0 +1,29 @@
+<h1>this is the piece show page display the piece and metadata</h1>
+
+<div>
+
+  <div>
+    TITLE: <%= @piece.title %>
+  </div>
+
+  <div>
+    <%= image_tag @piece.photo.url(:large) %>
+  </div>
+
+  <div>
+    PIECE DIMENSIONS: <%= @piece.size %>
+  </div>
+
+  <div>
+    MEDIUM: <%= @piece.medium %>
+  </div>
+
+  <div>
+    DESCRIPTION: <%= @piece.description %>
+  </div>
+
+  <div>
+    <%= link_to 'Edit this piece', edit_user_collection_piece_path(@user.id, @collection.id, @piece.id) %> |
+    <%= link_to 'Delete this piece', user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :delete %>
+  </div>
+</div>
