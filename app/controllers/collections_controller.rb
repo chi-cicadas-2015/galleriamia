@@ -25,7 +25,14 @@ class CollectionsController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @collection = Collection.find_by(id: params[:id])
 
-    p @collection.update(collection_params)
+    if @collection.update(collection_params)
+      if @user.type_of_user == "friend"
+        redirect_to user_path(@user.id)
+      end
+    else
+      @errors = @collection.errors.full_messages
+      render 'edit'
+    end
   end
 
   def destroy
