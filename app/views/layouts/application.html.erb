@@ -13,14 +13,20 @@
       <a href="#!" class="brand-logo">Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/login">Login</a></li>
-        <li><a href="/users/new">Sign Up</a></li>
+        <% if current_user %>
+        <% else %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/users/new">Sign Up</a></li>
+        <% end %>
         <li><a href="collapsible.html">Javascript</a></li>
         <li><a href="mobile.html">Mobile</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="/login">Login</a></li>
-        <li><a href="/users/new">Sign Up</a></li>
+        <% if current_user %>
+        <% else %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/users/new">Sign Up</a></li>
+        <% end %>
         <li><a href="collapsible.html">Javascript</a></li>
         <li><a href="mobile.html">Mobile</a></li>
       </ul>
