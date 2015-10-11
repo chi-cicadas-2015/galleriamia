@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, except: :index do
+  resources :users do
     resources :collections do
       resources :pieces do
         resources :tags
@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  get '/artists' => 'artists#index'
-  get '/artists/:id' => 'artists#show', as: 'artist'
+  get '/artists' => 'users#index'
 
   get "/login" => "sessions#new", as: "login"
   post "/login" => "sessions#create"
