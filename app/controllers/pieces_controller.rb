@@ -1,12 +1,6 @@
 class PiecesController < ApplicationController
 
-  def new
-    @user = User.find_by(id: params[:user_id])
-    @collection = Collection.find_by(id: params[:collection_id])
-    @piece = Piece.new
-  end
-
-  def create
+   def create
     @user = User.find_by(id: params[:user_id])
     @collection = Collection.find_by(id: params[:collection_id])
     params[:piece].merge!(artist_id: params[:user_id])
@@ -19,6 +13,44 @@ class PiecesController < ApplicationController
       render 'new'
     end
   end
+
+  def new
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:collection_id])
+    @piece = Piece.new
+  end
+
+  def edit
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:collection_id])
+    @piece = Piece.find_by(id: params[:id])
+  end
+
+  def show
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:collection_id])
+    @piece = Piece.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:collection_id])
+    updates = piece_params
+    @piece = Piece.find_by(id: params[:id])
+    if @piece.update_attributes(updates)
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @user = User.find_by(id: params[:user_id])
+    @piece = Piece.find(params[:id])
+    @piece.destroy
+    redirect_to @user
+  end
+
 
   private
     def piece_params
