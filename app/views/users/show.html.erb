@@ -19,8 +19,8 @@
            <li>
              <div class="collapsible-header">
                <%= collection.name %>
-               <a href="<%=edit_user_collection_path(@user.id, collection.id)%>">Edit</a>
-               <a href="<%=user_collection_path(@user.id, collection.id)%>">Delete</a>
+               <%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %>
+               <%= link_to "Delete", user_collection_path(@user.id, collection.id), method: :delete %>
              </div>
              <div class="collapsible-body"><p>stuff</p></div>
           </li>
