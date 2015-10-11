@@ -21,7 +21,7 @@
              <div class="collapsible-header">
               <%= collection.name %>
 
-              <% if current_user.id == @user.id %>
+              <% if current_user && current_user.id == @user.id %>
                  <%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %>
                  <%= link_to "Delete", user_collection_path(@user.id, collection.id), method: :delete %>
               <% end %>
