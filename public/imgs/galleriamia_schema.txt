@@ -53,16 +53,19 @@
 <row name="statement" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
-<row name="medium" null="1" autoincrement="0">
+<row name="type_of_user" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
-<row name="avatar_url" null="1" autoincrement="0">
+<row name="avatar_file_name" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
-<row name="photo_url" null="1" autoincrement="0">
+<row name="avatar_content_type" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
-<row name="type" null="1" autoincrement="0">
+<row name="avatar_file_size" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="avatar_updated_at" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -75,9 +78,6 @@
 <default>NULL</default></row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="date" null="1" autoincrement="0">
-<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="start_time" null="1" autoincrement="0">
 <datatype>DATE</datatype>
@@ -125,6 +125,9 @@
 <default>NULL</default></row>
 <row name="description" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="artist_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
