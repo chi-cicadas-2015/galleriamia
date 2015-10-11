@@ -29,4 +29,10 @@
     <div id="test3" class="col s12"> Come to my show </div>
   </div>
 
+  <% if current_user && current_user.id == @artist.id %>
+    <div class="add-collection">
+      <a href="<%=new_user_collection_path(@artist.id)%>">Add a Collection</a>
+    </div>
+  <% end %>
+
 </div>

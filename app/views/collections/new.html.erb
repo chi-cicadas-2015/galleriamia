@@ -1,0 +1,32 @@
+<div class="container">
+
+  <h1>Add a Collection</h1>
+
+  <% if @errors %>
+    <ul class="errors">
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="new-collection-form">
+    <%= form_for :collection, url: user_collections_path, :html => { :mulitpart => true } do |f| %>
+
+      <div>
+        <%= f.label :name, "Name" %><br>
+        <%= f.text_field :name %>
+      </div>
+
+      <div>
+        <%= f.label :description, "Description" %><br>
+        <%= f.text_field :description %>
+      </div>
+
+      <div>
+        <%= f.submit %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
