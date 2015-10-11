@@ -20,12 +20,16 @@
              <div class="collapsible-header">
                <%= collection.name %>
 
-               <% if current_user.id == @artist.id %>
+               <% if current_user && current_user.id == @artist.id %>
                  <%= link_to "Edit", edit_user_collection_path(@artist.id, collection.id), method: :get %>
                  <%= link_to "Delete", user_collection_path(@artist.id, collection.id), method: :delete %>
                <% end %>
              </div>
-             <div class="collapsible-body"><p>stuff</p></div>
+             <div class="collapsible-body">
+               <% collection.pieces.each do |piece| %>
+                 <%= image_tag piece.photo.url(:thumb) %>
+               <% end %>
+             </div>
           </li>
         <% end %>
       </ul>
