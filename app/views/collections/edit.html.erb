@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1>Add a Collection</h1>
+  <h1>Edit Collection: <%=@collection.name%></h1>
 
   <% if @errors %>
     <ul class="errors">
@@ -10,8 +10,8 @@
     </ul>
   <% end %>
 
-  <div class="new-collection-form">
-    <%= form_for :collection, url: user_collections_path, :html => { :multipart => true } do |f| %>
+  <div class="edit-collection-form">
+    <%= form_for :collection, url: user_collection_path(current_user.id, @collection.id), method: :post, :html => { :multipart => true } do |f| %>
 
       <div>
         <%= f.label :name, "Name" %><br>

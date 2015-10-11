@@ -17,8 +17,15 @@ class CollectionsController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    @collection = Collection.find_by(id: params[:id])
+  end
 
+  def update
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:id])
+
+    p @collection.update(collection_params)
   end
 
   def destroy
