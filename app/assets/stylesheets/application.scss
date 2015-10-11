@@ -1,3 +1,20 @@
 @import "materialize/components/color";
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
+
+
+#blur img {
+  -webkit-filter: blur(10px) grayscale(.5) opacity(.7);
+}
+
+#welcome_btn {
+  padding: 1em;
+  padding-bottom: 2em;
+  font-family: 'Righteous', sans-serif;
+  font-size: 2em;
+  margin-top: 150px;
+  text-align: center;
+  background-color: inherit;
+  color: white;
+  border: white solid;
+}

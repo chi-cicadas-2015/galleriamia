@@ -35,7 +35,13 @@
         <% end %>
       </ul>
     </div>
-    <div id="test2" class="col s12"> The "about me" info </div>
+    <div id="test2" class="col s12">
+      <div>
+        <div>EMAIL: <%= @user.email %></div>
+        <div>STATEMENT: <%= @user.statement %></div>
+        <div>MEMBER SINCE: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
+      </div>
+    </div>
     <div id="test3" class="col s12"> Come to my show </div>
   </div>
 
