@@ -3,15 +3,13 @@ Collection.delete_all
 Piece.delete_all
 Tag.delete_all
 
-user_types = ["artist", "friend"]
-
 # Create users
 20.times do
   user = User.new(name: Faker::Name.name,
                   email:Faker::Internet.email,
                   password:"testing1234",
                   statement: Faker::Company.catch_phrase,
-                  type_of_user: "artist")
+                  artist: true)
   user.save
 end
 
@@ -21,7 +19,7 @@ end
                   email:Faker::Internet.email,
                   password:"testing1234",
                   statement: Faker::Company.catch_phrase,
-                  type_of_user: "friend")
+                  artist: false)
   friend.save
 end
 
@@ -48,7 +46,7 @@ end
 
 sizes = ["9x12", "10x14", "15x22", "22x30"]
 
-artist_pool = User.where(type_of_user: "artist")
+artist_pool = User.where(artist: true)
 
 100.times do
   p = Piece.new(title: Faker::Commerce.product_name,
