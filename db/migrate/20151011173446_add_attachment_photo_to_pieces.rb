@@ -5,10 +5,6 @@ class AddAttachmentPhotoToPieces < ActiveRecord::Migration
     end
   end
 
-  def create
-
-  end
-
   def self.down
     remove_attachment :pieces, :photo
   end
