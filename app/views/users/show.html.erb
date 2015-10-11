@@ -26,7 +26,13 @@
                  <%= link_to "Delete", user_collection_path(@user.id, collection.id), method: :delete %>
               <% end %>
              </div>
-             <div class="collapsible-body"><p>stuff</p></div>
+             <div class="collapsible-body">
+              <% @collections.each do |collection| %>
+                <% collection.pieces.each do |piece| %>
+                  <%= image_tag piece.photo.url(:thumb) %>
+                <% end %>
+              <% end %>
+            </div>
           </li>
         <% end %>
       </ul>

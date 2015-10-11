@@ -1,15 +1,17 @@
 class PiecesController < ApplicationController
 
   def new
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:collection_id])
     @piece = Piece.new
   end
 
   def create
-    @user = User.find_by(params[:id])
-    @collection = @user.collections.find(params[:collection_id])
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:collection_id])
     @piece = Piece.new(piece_params)
-    @collection << @piece
     if @piece.save
+      @collection.pieces << @piece
       redirect_to @user
     else
       @errors = @piece.errors.full_messages

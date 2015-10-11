@@ -10,8 +10,8 @@
   <% end %>
 
 
-  <div>
-    <%= form_for :piece, url: user_collection_pieces_path, :html => { :multipart => true } do |f| %>
+  <div class="new-piece-form">
+    <%= form_for :piece, url: user_collection_pieces_path(@user.id, @collection.id), method: :post, :html => { :multipart => true } do |f| %>
 
     <div>
       <%= f.label :title, "Title" %><br>
