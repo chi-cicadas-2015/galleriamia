@@ -27,11 +27,9 @@
               <% end %>
              </div>
              <div class="collapsible-body">
-              <% @collections.each do |collection| %>
                 <% collection.pieces.each do |piece| %>
                   <%= image_tag piece.photo.url(:thumb) %>
                 <% end %>
-              <% end %>
             </div>
           </li>
         <% end %>
