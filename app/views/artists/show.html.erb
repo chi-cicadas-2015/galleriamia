@@ -1,14 +1,35 @@
 <div class="container">
 
+
   <div class="artist-header">
     <h1><%=@artist.name%></h1>
     <%= image_tag @artist.avatar.url(:thumb) %>
   </div>
 
-  <% @collections.each do |collection| %>
-    <div class="collection-container">
-      <a href="<%=user_collection_pieces_path(collection.id, @artist.id)%>"><%= collection.name %></a>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#test1">Collections</a></li>
+        <li class="tab col s3 "><a href="#test2">About</a></li>
+        <li class="tab col s3"><a href="#test3">Events</a></li>
+      </ul>
     </div>
-  <% end %>
+    <div id="test1" class="col s12">
+      <ul class="collapsible" data-collapsible="expandable">
+        <% @collections.each do |collection| %>
+           <li>
+             <div class="collapsible-header">
+               <%= collection.name %>
+             </div>
+             <div class="collapsible-body"><p>stuff</p></div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="test2" class="col s12"> The "about me" info </div>
+    <div id="test3" class="col s12"> Come to my show </div>
+  </div>
+
+
 
 </div>
