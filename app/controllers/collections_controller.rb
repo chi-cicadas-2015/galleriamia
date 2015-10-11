@@ -26,11 +26,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.find_by(id: params[:id])
 
     if @collection.update(collection_params)
-      if @user.artist
-        redirect_to artist_path(@user.id)
-      else
-        redirect_to user_path(@user.id)
-      end
+      redirect_to user_path(@user.id)
     else
       @errors = @collection.errors.full_messages
       render 'edit'
@@ -42,11 +38,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.find_by(id: params[:id])
     @collection.destroy
 
-    if @user.artist
-      redirect_to artist_path(@user.id)
-    else
-      redirect_to user_path(@user.id)
-    end
+    redirect_to user_path(@user.id)
   end
 
   private
