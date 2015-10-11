@@ -52,8 +52,6 @@ artist_pool = User.where(artist: true)
   p = Piece.new(title: Faker::Commerce.product_name,
                 size: sizes.sample,
                 medium: "medium",
-                image_url_thumb: "url",
-                url_full: "url",
                 description: Faker::Company.catch_phrase,
                 artist_id: artist_pool.sample.id)
   p.save
