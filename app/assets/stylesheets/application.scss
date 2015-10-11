@@ -9,5 +9,12 @@ $primary-color: color("blue", "lighten-2") !default;
 }
 
 #welcome_btn {
-  
+  padding: inherit;
+  font-size: 2em;
+  display: inline-block;
+  margin-top: 250px;
+  text-align: left;
+  background-color: inherit;
+  color: white;
+  border: white solid;
 }
