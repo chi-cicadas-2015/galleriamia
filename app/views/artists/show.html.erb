@@ -15,7 +15,7 @@
     </div>
     <div id="test1" class="col s12">
       <ul class="collapsible" data-collapsible="expandable">
-        <% if @collections && @collections.each do |collection| %>
+        <% @collections.each do |collection| %>
            <li>
              <div class="collapsible-header">
                <%= collection.name %>
