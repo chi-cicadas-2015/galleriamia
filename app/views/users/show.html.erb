@@ -1,13 +1,15 @@
 <div class="container">
+  <h1>the user's show page</h1>
 
-  <div class="artist-header">
-    <h1><%=@artist.name%></h1>
+  <div>
+    <%= @user.name %>
   </div>
 
-  <% @collections.each do |collection| %>
+  <% if @collections && @collections.each do |collection| %>
     <div class="collection-container">
       <a href="<%=user_collection_pieces_path(collection.id, @artist.id)%>"><%= collection.name %></a>
     </div>
+  <% end %>
   <% end %>
 
 </div>

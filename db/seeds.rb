@@ -1,3 +1,11 @@
+User.delete_all
+Collection.delete_all
+Piece.delete_all
+Tag.delete_all
+
+
+
+
 user_types = ["artist", "friend"]
 
 # Create users
@@ -21,16 +29,12 @@ User.create(name: "Paulo",
                 email:"y",
                 password:"testing1234",
                 statement: "s",
-                avatar_url: "e",
-                photo_url: "e",
                 type_of_user: "artist")
 
 User.create(name: "Maddie",
                 email:"y",
                 password:"testing1234",
                 statement: "s",
-                avatar_url: "e",
-                photo_url: "e",
                 type_of_user: "friend")
 
 
