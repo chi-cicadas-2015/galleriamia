@@ -1,0 +1,40 @@
+<h1>the piece edit page</h1>
+
+
+<div>
+  <%= @piece.title %>
+  <%= image_tag @piece.photo.url(:thumb) %>
+  <div>
+    <%= form_for :piece, url: user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :patch, :html => { :multipart => true } do |f| %>
+
+    <div>
+      <%= f.label :title, "Title" %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :size, "Size" %><br>
+      <%= f.text_field :size %>
+    </div>
+
+    <div>
+      <%= f.label :medium, "Medium" %><br>
+      <%= f.text_field :medium %>
+    </div>
+
+    <div>
+      <%= f.label :description, "Description" %><br>
+      <%= f.text_field :description %>
+    </div>
+
+    <div>
+      <%= f.file_field :photo %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
