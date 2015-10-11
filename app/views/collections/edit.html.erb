@@ -29,4 +29,8 @@
 
     <% end %>
   </div>
+
+  <div>
+    <%= link_to "Add a new piece to the collection", new_user_collection_piece_path(current_user.id, @collection.id) %>
+  </div>
 </div>
