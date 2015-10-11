@@ -26,7 +26,9 @@ class CollectionsController < ApplicationController
     @collection = Collection.find_by(id: params[:id])
 
     if @collection.update(collection_params)
-      if @user.type_of_user == "friend"
+      if @user.artist
+        redirect_to artist_path(@user.id)
+      else
         redirect_to user_path(@user.id)
       end
     else
@@ -36,7 +38,15 @@ class CollectionsController < ApplicationController
   end
 
   def destroy
+    @user = User.find_by(id: params[:user_id])
+    @collection = Collection.find_by(id: params[:id])
+    @collection.destroy
 
+    if @user.artist
+      redirect_to artist_path(@user.id)
+    else
+      redirect_to user_path(@user.id)
+    end
   end
 
   private
