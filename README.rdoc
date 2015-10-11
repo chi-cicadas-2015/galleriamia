@@ -1,7 +1,8 @@
-![ ](public/imgs/logobase1-480x480.png)  
+<img src=public/imgs/logobase1-480x480.png>   
+# {<img src="public/imgs/logobase1-480x480.png" alt="Build Status" />}[file]   
   
 
-## GalleriaMia   [![Build Status](https://secure.travis-ci.org/chi-cicadas-2015/galleriamia.png)][Continuous Integration]
+== GalleriaMia   [![Build Status][https://secure.travis-ci.org/chi-cicadas-2015/galleriamia.png)]
 
 
 mission statement  
@@ -20,7 +21,7 @@ Our workflow is laid out in CONTRIBUTING.md
 
 === Database Schema  
 
-![DB Schema](public/imgs/galleriamia_schema.png)
+<img src=public/imgs/galleriamia_schema.png>
 
 
 === Crafted by

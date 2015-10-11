@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @artists = User.where(artist: true)
   end
 
   def show
