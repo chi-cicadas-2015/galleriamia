@@ -5,16 +5,38 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <% if current_user %>
+          <li><a href="/logout">Logout</a></li>
+        <% else %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/users/new">Sign Up</a></li>
+        <% end %>
+        <li><a href="">Artists</a></li>
+        <li><a href="">Button</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <% if current_user %>
+          <li><a href="/logout">Logout</a></li>
+        <% else %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/users/new">Sign Up</a></li>
+        <% end %>
+        <li><a href="">Artists</a></li>
+        <li><a href="">Button</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <% if current_user %>
-    <li><%= current_user.name %></li>
-    <li><%= link_to "Logout", logout_path %></li>
-  <% else %>
-    <li><%= link_to "Login", login_path %></li>
-    <li><%= link_to "Signup", new_user_path %></li>
+    <%= image_tag current_user.avatar.url(:thumb) %> | <%= current_user.name %>
   <% end %>
 
 <%= yield %>
