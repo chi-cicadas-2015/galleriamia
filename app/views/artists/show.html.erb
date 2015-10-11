@@ -9,25 +9,25 @@
     <div class="col s12">
       <ul class="tabs">
         <li class="tab col s3"><a class="active" href="#test1">Collections</a></li>
-        <li class="tab col s3"><a href="#test2">About</a></li>
+        <li class="tab col s3 "><a href="#test2">About</a></li>
         <li class="tab col s3"><a href="#test3">Events</a></li>
-        <li class="tab col s3"><a href="#test4">Settings</a></li>
-        <li class="tab col s3"><a href="#test5">Edit</a></li>
       </ul>
     </div>
     <div id="test1" class="col s12">
-      <% @collections.each do |collection| %>
-        <div >
-          <a href="<%=user_collection_pieces_path(collection.id, @artist.id)%>"><%= collection.name %></a>
-        </div>
-      <% end %>
+      <ul class="collapsible" data-collapsible="expandable">
+        <% @collections.each do |collection| %>
+           <li>
+             <div class="collapsible-header">
+               <%= collection.name %>
+             </div>
+             <div class="collapsible-body"><p>stuff</p></div>
+          </li>
+        <% end %>
+      </ul>
     </div>
-    <div id="test2" class="col s12"> "about me" info</div>
-    <div id="test3" class="col s12"> Come to my show</div>
-    <div id="test4" class="col s12">Settings</div>
-    <div id="test5" class="col s12">Edit</div>
+    <div id="test2" class="col s12"> The "about me" info </div>
+    <div id="test3" class="col s12"> Come to my show </div>
   </div>
-
 
 
 

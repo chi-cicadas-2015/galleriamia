@@ -40,6 +40,8 @@ User.create(name: "Maddie",
 
 
 Collection.create(user_id: 1, name: "Collection test 1", description: "This is the description")
+Collection.create(user_id: 1, name: "Collection test 2", description: "This is the description")
+Collection.create(user_id: 1, name: "Collection test 3", description: "This is the description")
 
 
 
