@@ -1,4 +1,4 @@
-# GalleriaMia   [![Build Status](#)][Continuous Integration]
+# GalleriaMia   [![Build Status](https://secure.travis-ci.org/chi-cicadas-2015/galleriamia.png)][Continuous Integration]
 
 
 mission statement
