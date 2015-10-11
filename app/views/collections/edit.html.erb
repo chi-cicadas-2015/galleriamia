@@ -11,7 +11,7 @@
   <% end %>
 
   <div class="edit-collection-form">
-    <%= form_for :collection, url: user_collection_path(current_user.id, @collection.id), method: :post, :html => { :multipart => true } do |f| %>
+    <%= form_for :collection, url: user_collection_path(current_user.id, @collection.id), method: :put, :html => { :multipart => true } do |f| %>
 
       <div>
         <%= f.label :name, "Name" %><br>
