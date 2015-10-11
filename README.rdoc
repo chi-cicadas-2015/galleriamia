@@ -1,28 +1,32 @@
-== README
+![ ](public/imgs/logobase1-480x480.png)  
+  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## GalleriaMia   [![Build Status](https://secure.travis-ci.org/chi-cicadas-2015/galleriamia.png)][Continuous Integration]
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+mission statement  
+heroku link  
+screenshot samples  
+
+=== System Requirements  
+==== External APIs and Libraries  
+=== Getting Started  
+
+
+=== Workflow  
+
+Our workflow is laid out in CONTRIBUTING.md
+
+
+=== Database Schema  
+
+![DB Schema](public/imgs/galleriamia_schema.png)
+
+
+=== Crafted by
+
+Maddie:: https://github.com/madelynkasula  
+Greg:: https://github.com/gptasinski  
+Nic:: https://github.com/nilo916  
+Paulo:: https://github.com/pdgonzalez872  
+David:: https://github.com/cicadavid  
