@@ -11,5 +11,5 @@ class Piece < ActiveRecord::Base
                     :styles => { :thumb => "100x100>",
                                  :large => "300x300>"}
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_file_name :photo, matches: [/png\Z/, /jpe?g\Z/]
+  validates_attachment_file_name :photo, matches: [/png\Z/, /PNG\Z/, /jpe?g\Z/, /JPE?G\Z/]
 end
