@@ -2,15 +2,29 @@
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 
+body{
+  background-color: #B1BABF;
+}
+
 #show{
   font-family: 'Righteous', sans-serif;
 }
+
+nav{
+  background-color: gray;
+}
+
+// .collapsible-header{
+//   font-size: 2em;
+// }
 
 .settings{
   background-color: gray;
   margin-top: 4px;
   padding-left: 4px;
 }
+
+
 
 .icon{
     position: relative;

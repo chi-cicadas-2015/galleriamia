@@ -19,7 +19,9 @@
         <% @collections.each do |collection| %>
            <li>
              <div class="collapsible-header">
-               <%= collection.name %>
+              
+                 <%= collection.name %>
+
 
                 <% if current_user && current_user.id == @user.id %>
                  <a class="dropdown-button waves-effect waves-circle waves-light btn-floating secondary-content settings" href='#' data-activates="collection-<%=collection.id%>"><i class="material-icons icon">settings</i></a>
@@ -40,7 +42,7 @@
       </ul>
       <% if current_user && current_user.id == @user.id %>
         <div class="add-collection">
-          <a href="<%=new_user_collection_path(@user.id)%>">Add a Collection</a>
+          <a href="<%=new_user_collection_path(@user.id)%>"><i class="medium material-icons">add_library</i></a>
         </div>
       <% end %>
     </div>
