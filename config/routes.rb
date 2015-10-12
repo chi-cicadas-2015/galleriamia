@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
 
+  get '/artists/random' => 'users#random_artist'
+
   get "welcome/index"
 
   root "welcome#index"
