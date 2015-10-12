@@ -1,0 +1,40 @@
+<div class="container">
+
+  <% if @errors %>
+    <ul class="errors">
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="new-profile-form">
+    <%= form_for :profile, url: artist_details_user_path(@user), :html => { :multipart => true } do |f| %>
+
+      <div>
+        <%= f.label :top_collection, "Top Collection" %><br>
+        <%= f.text_field :top_collection %>
+      </div>
+
+      <div>
+        <%= f.label :website_url, "Website URL" %><br>
+        <%= f.text_field :website_url %>
+      </div>
+
+      <div>
+        <%= f.label :primary_medium, "Primary Medium" %><br>
+        <%= f.text_field :primary_medium %>
+      </div>
+
+      <div>
+        <%= f.file_field :headshot %>
+      </div>
+
+      <div>
+        <%= f.submit %>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>
