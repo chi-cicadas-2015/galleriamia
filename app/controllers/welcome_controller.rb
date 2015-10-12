@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
 
   def search
     @query = params[:query]
-    @artist_results = User.where(["artist='%s' AND name='%s'", true, @query])
+    @artist_results = User.where("(artist = ?) AND (lower(name) LIKE ?)", true, "%#{@query.downcase}%")
     @collection_results
     @piece_results
     @tag_results
