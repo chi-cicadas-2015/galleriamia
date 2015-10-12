@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @collections = Collection.where(user_id: @user.id)
   end
 
@@ -23,6 +23,26 @@ class UsersController < ApplicationController
       @errors = @user.errors.full_messages
       render 'new'
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to @user
+    else
+      @errors = @user.errors.full_messages
+      render 'edit'
+    end
+  end
+
+  def random_artist
+    artists = User.where(artist: true)
+    @user = artists.sample
+    redirect_to @user
   end
 
   private
