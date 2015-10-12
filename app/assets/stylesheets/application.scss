@@ -20,6 +20,9 @@ $primary-color: color("blue", "lighten-2") !default;
 #blur img {
   -webkit-filter: blur(10px) grayscale(.5) opacity(.7);
 }
+.tabs a{
+  font-size: 2em;
+}
 
 #welcome_btn {
   padding: 1em;

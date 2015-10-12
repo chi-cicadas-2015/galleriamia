@@ -12,7 +12,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="/welcome/index" class="brand-logo">Galleria Mia</a>
+      <a href="/welcome/index" class="brand-logo center">Galleria Mia</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <% if current_user %>
@@ -22,10 +22,6 @@
           <li><%= link_to 'Sign Up', new_user_path %></li>
         <% end %>
         <li><%= link_to 'Artists', artists_path %></li>
-        <!-- <li>
-            <%=@user.name%>
-            <%= image_tag @user.avatar.url(:thumb) %>
-          </li> -->
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <% if current_user %>
@@ -38,6 +34,9 @@
       </ul>
     </div>
   </nav>
+
+
+
 
   <% if current_user %>
     <%= image_tag current_user.avatar.url(:thumb) %> | <a href="/users/<%= current_user.id %>"><%= current_user.name %></a>
