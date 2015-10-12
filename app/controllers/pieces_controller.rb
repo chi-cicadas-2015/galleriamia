@@ -1,17 +1,9 @@
 class PiecesController < ApplicationController
 
-   def create
+  def show
     @user = User.find_by(id: params[:user_id])
     @collection = Collection.find_by(id: params[:collection_id])
-    params[:piece].merge!(artist_id: params[:user_id])
-    @piece = Piece.new(piece_params)
-    if @piece.save
-      @collection.pieces << @piece
-      redirect_to @user
-    else
-      @errors = @piece.errors.full_messages
-      render 'new'
-    end
+    @piece = Piece.find_by(id: params[:id])
   end
 
   def new
@@ -26,10 +18,18 @@ class PiecesController < ApplicationController
     @piece = Piece.find_by(id: params[:id])
   end
 
-  def show
+  def create
     @user = User.find_by(id: params[:user_id])
     @collection = Collection.find_by(id: params[:collection_id])
-    @piece = Piece.find_by(id: params[:id])
+    params[:piece].merge!(artist_id: params[:user_id])
+    @piece = Piece.new(piece_params)
+    if @piece.save
+      @collection.pieces << @piece
+      redirect_to @user
+    else
+      @errors = @piece.errors.full_messages
+      render 'new'
+    end
   end
 
   def update
