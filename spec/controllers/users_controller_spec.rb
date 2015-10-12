@@ -12,7 +12,7 @@ describe UsersController do
   describe "GET index" do
     it "assigns all users as @artists" do
       get :index
-      # expect(assigns(:artist)).to eq([user])
+      # expect(assigns(:user)).to eq([user])
     end
   end
 

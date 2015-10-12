@@ -41,19 +41,20 @@ feature "User - Login/Profile page" do
 
   p user.errors
 
-  scenario "User can log in" do
-    visit login_path
-    expect(page).to have_content("Login")
-    expect(page).to have_content("Sign Up")
-    fill_in("session_email", :with => user.email)
-    fill_in("session_password", :with => "testing1234")
-    save_and_open_page
-    click_button 'Save Session'
-    expect(page).to have_text("Sign in successful")
-  end
+  # TODO
+  # scenario "User can log in" do
+  #   visit login_path
+  #   expect(page).to have_content("Login")
+  #   expect(page).to have_content("Sign Up")
+  #   fill_in("session_email", :with => user.email)
+  #   fill_in("session_password", :with => "testing1234")
+  #   save_and_open_page
+  #   click_button 'Save Session'
+  #   expect(page).to have_text("Sign in successful")
+  # end
 
   scenario "User can see information about his/her profile after logging in" do
-
+    # TODO
   end
 end
 
