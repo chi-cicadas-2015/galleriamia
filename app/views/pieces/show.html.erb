@@ -20,9 +20,11 @@
     Description: <%= @piece.description %>
   </div>
 
-  <div>
-    <%= link_to 'Edit', edit_user_collection_piece_path(@user.id, @collection.id, @piece.id) %> |
-    <%= link_to 'Delete', user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :delete %>
-  </div>
+  <% if current_user && current_user.id == @user.id %>
+    <div>
+      <%= link_to 'Edit', edit_user_collection_piece_path(@user.id, @collection.id, @piece.id) %> |
+      <%= link_to 'Delete', user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :delete %>
+    </div>
+  <% end %>
 
 </div>
