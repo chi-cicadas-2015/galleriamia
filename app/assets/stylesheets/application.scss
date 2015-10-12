@@ -2,9 +2,40 @@
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 
+body{
+  background-color: #B1BABF;
+}
+
+#show{
+  font-family: 'Righteous', sans-serif;
+}
+
+nav{
+  background-color: gray;
+}
+
+// .collapsible-header{
+//   font-size: 2em;
+// }
+
+.settings{
+  background-color: gray;
+  margin-top: 4px;
+  padding-left: 4px;
+}
+
+
+
+.icon{
+    position: relative;
+    bottom: 3px;
+}
 
 #blur img {
   -webkit-filter: blur(10px) grayscale(.5) opacity(.7);
+}
+.tabs a{
+  font-size: 2em;
 }
 
 #welcome_btn {
