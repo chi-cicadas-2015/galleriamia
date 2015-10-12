@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+User.delete_all
+
 describe User do
 
   artist = User.create(name: "Pablo Picasso",
@@ -21,7 +23,7 @@ describe User do
     end
 
     it "Persists the artist to the database" do
-      expect(artist.name).to eq(User.first.name)
+      expect("Pablo Picasso").to eq(User.first.name)
     end
   end
 

@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+User.delete_all
+
 describe UsersController do
 
   let!(:user) {User.create!(name: "Michelangelo",

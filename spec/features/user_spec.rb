@@ -1,12 +1,13 @@
 require 'rails_helper'
 
+User.delete_all
 
 feature "User - Landing page" do
   scenario "User visits the root and is greated with options" do
     visit "/"
-    expect(page).to have_text("Galleria Mia")
-    expect(page).to have_text("Random Artist")
-    expect(page).to have_text("Sign Up")
+    expect(page).to have_link("Galleria Mia")
+    expect(page).to have_link("Random Artist")
+    expect(page).to have_link("Sign Up")
   end
 
   scenario "User selects the Sign Up option and creates an account" do
@@ -22,21 +23,42 @@ feature "User - Landing page" do
 
 end
 
-feature "User - Profile page" do
-  scenario "User can see information about his/her profile" do
-    User.create!(name: "Donatello",
-                   email: "donatello@fakemail.com",
-                   password: "testing1234",
-                   statement: "This is a test statement",
-                   artist: true)
-    user = User.last
-    visit user_path(user)
+feature "User - Login/Profile page" do
 
-    expect(page).to have_content("#{user.name}")
-    expect(page).to have_content("Edit Settings")
-    expect(page).to have_content("Collections")
-    expect(page).to have_content("About")
-    expect(page).to have_content("Events")
+  User.create!(name: "Donatello",
+                 email: "donatello@fakemail.com",
+                 password: "testing1234",
+                 statement: "This is a test statement",
+                 artist: true)
+  user = User.last
+
+
+  scenario "User can log in" do
+
+    visit login_path
+    expect(page).to have_content("Login")
+    expect(page).to have_content("Sign Up")
+    fill_in "session_email", :with => user.email
+    fill_in "session_password", :with => "testing1234"
+    click_button('Save Session')
+  end
+
+
+  scenario "User can see information about his/her profile after logging in" do
+
+
+    # visit login page, input fields
+
+
+    # visit user_path(user)
+    #
+    # expect(page).to have_content("#{user.name}")
+    #
+    # expect(page).to have_link("Artists", href: "/artists")
+    #
+    # expect(page).to have_content("Collections")
+    # expect(page).to have_content("About")
+    # expect(page).to have_content("Events")
   end
 end
 
@@ -49,6 +71,6 @@ feature "User - Edit settings page" do
 
 
     expect(page).to have_text("Name")
-    
+
   end
 end
