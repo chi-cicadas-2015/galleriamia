@@ -1,6 +1,8 @@
 ![](public/imgs/logobase1-480x480.png)  
 
-## Galleria Mia       [![Build Status](https://secure.travis-ci.org/chi-cicadas-2015/galleriamia.png)]
+## Galleria Mia       [![Build Status](https://secure.travis-ci.org/chi-cicadas-2015/galleriamia.png)]     [![Coverage Status](https://coveralls.io/repos/chi-cicadas-2015/galleriamia/badge.svg?branch=master&service=github)](https://coveralls.io/github/chi-cicadas-2015/galleriamia?branch=master)
+
+
 
 
 Galleria Mia was inspired by a frustrated desire for a simple, mobile website where an Artist could show their work.
