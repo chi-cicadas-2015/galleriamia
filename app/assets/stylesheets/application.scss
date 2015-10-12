@@ -7,8 +7,6 @@ $primary-color: color("blue", "lighten-2") !default;
 
 body{
   background-color: #B1BABF;
-  position:relative;
-  margin-bottom: auto;
 }
 
 #show{
@@ -20,9 +18,9 @@ nav{
   background-color: gray;
 }
 
-#collection_img{
-  display: inline-block;
-}
+// .collapsible-header{
+//   font-size: 2em;
+// }
 
 .settings{
   background-color: gray;
@@ -70,12 +68,12 @@ nav{
 }
 
 footer {
-   background-color: #5E5E5E;
    position:fixed;
    left:0px;
    bottom:0px;
-   height: 75px;
+   height: 100px;
    width:100%;
+   background:#999;
 }
 footer h5{
   display: inline;
