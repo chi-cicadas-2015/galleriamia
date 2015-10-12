@@ -26,5 +26,7 @@ Rails.application.routes.draw do
 
   get "welcome/index"
 
+  get '/search' => 'welcome#search'
+
   root "welcome#index"
 end
