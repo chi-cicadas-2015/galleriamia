@@ -9,10 +9,11 @@ describe UsersController do
                     password:"testing1234",
                     statement: "This is the test statement",
                     artist: true)}
+
   describe "GET index" do
     it "assigns all users as @artists" do
       get :index
-      # expect(assigns(:user)).to eq([user])
+      expect(page).to respond_with(:success)
     end
   end
 

@@ -17,7 +17,6 @@ describe User do
                     artist: false)
 
   describe "Artist" do
-
     it "Creates an artist user correctly" do
       expect(artist).to be_a(User)
     end
@@ -28,7 +27,6 @@ describe User do
   end
 
   describe "Non-Artist" do
-
     it "Creates a non-artist user correctly" do
       expect(non_artist).to be_a(User)
     end
@@ -36,13 +34,11 @@ describe User do
     it "Persists the non-artist to the database" do
       expect("Pablo NOT Picasso").to eq(non_artist.name)
     end
-
   end
 
   describe "Followers" do
 
     it "Artist follower count increases when followed" do
-
       follower_count_pre = artist.followers.length
       artist.followers << non_artist
       follower_count_post = artist.followers.length
@@ -60,8 +56,6 @@ describe User do
 
   end
 
-  # validations work appropriately
-
   describe "Model validations" do
 
     new_user = User.new(name: "",
@@ -70,15 +64,21 @@ describe User do
                         statement: "This is the test statement",
                         artist: false)
 
-    it "User name presence" do
+    it "User without a name is not valid" do
       expect(new_user.valid?).to be(false)
+    end
+
+    it "User without a name is receives appropriate message as feedback" do
       expect(new_user.errors.messages[:name][0]).to eq("can't be blank")
     end
 
-    it "Email presence and uniqueness" do
+    it "Email without an email is not valid" do
       expect(new_user.valid?).to be(false)
+    end
+    it "Email without an email receives appropriate message as feedback" do
       expect(new_user.errors.messages[:email][0]).to eq("can't be blank")
     end
+
   end
 
   # can create collections and assign to the user
