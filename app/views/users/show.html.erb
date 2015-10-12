@@ -3,7 +3,8 @@
 
   <div class="user-header">
     <h1><%=@user.name%></h1>
-    <%= image_tag @user.avatar.url(:thumb) %>
+    <%= image_tag @user.avatar.url(:thumb) %><br>
+    <%= link_to 'Edit Settings', edit_user_path(@user) %>
   </div>
 
   <div class="row">
@@ -47,7 +48,7 @@
 
   <% if current_user && current_user.id == @user.id %>
     <div class="add-collection">
-      <a href="<%=new_user_collection_path(@user.id)%>">Add a Collection</a>
+      <%= link_to 'Add a Collection', new_user_collection_path(@user.id) %>
     </div>
   <% end %>
 
