@@ -1,0 +1,43 @@
+<h1>the user's edit page</h1>
+
+<div>
+  <%= @user.name %>
+  <% if @errors %>
+    <ul class="errors">
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+
+      <div>
+        <%= f.label :name, "Name" %><br>
+        <%= f.text_field :name %>
+      </div>
+
+      <div>
+        <%= f.label :email, "Email" %><br>
+        <%= f.email_field :email %>
+      </div>
+
+      <div>
+        <%= f.label :statement, "Statement" %><br>
+        <%= f.text_field :statement %>
+      </div>
+
+      <div>
+        <%= f.label :password, "Password" %><br>
+        <%= f.password_field :password %>
+      </div>
+
+      <div>
+        <%= f.submit %>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

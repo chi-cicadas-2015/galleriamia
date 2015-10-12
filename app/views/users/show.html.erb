@@ -3,7 +3,8 @@
 
   <div class="user-header">
     <h1><%=@user.name%></h1>
-    <%= image_tag @user.avatar.url(:thumb) %>
+    <%= image_tag @user.avatar.url(:thumb) %><br>
+    <%= link_to 'Edit Settings', edit_user_path(@user) %>
   </div>
 
   <div class="row">
