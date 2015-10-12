@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       redirect_to @user
     else
       @errors = @user.errors.full_messages
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :avatar, :artist)
+    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist)
   end
 
   def create_default_collection(user_id)
