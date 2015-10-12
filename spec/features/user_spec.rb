@@ -52,7 +52,6 @@ feature "User - Login/Profile page" do
     expect(page).to have_text("Sign in successful")
   end
 
-
   scenario "User can see information about his/her profile after logging in" do
 
   end
