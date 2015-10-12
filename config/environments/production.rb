@@ -76,7 +76,9 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
       :storage => :s3,
-
+      :bucket => 'galleriamia_prod',
+      :url => ':s3_domain_url',
+      :path => "/pieces/:id/:style/:basename.:extension",
       :s3_credentials => {
         :bucket => ENV['S3_BUCKET_NAME'],
         :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
