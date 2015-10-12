@@ -21,8 +21,9 @@
         <% @collections.each do |collection| %>
            <li>
              <div class="collapsible-header">
-              
+
                  <%= collection.name %>
+
 
 
                 <% if current_user && current_user.id == @user.id %>
@@ -36,7 +37,7 @@
              </div>
              <div class="collapsible-body">
                 <% collection.pieces.each do |piece| %>
-                  <%= link_to image_tag(piece.photo.url(:thumb)), user_collection_piece_path(@user.id, collection.id, piece.id) %>
+                  <img class="materialboxed" src="<%=piece.photo.url(:large)%>">
                 <% end %>
             </div>
           </li>
@@ -50,9 +51,9 @@
     </div>
     <div id="test2" class="col s12">
       <div>
-        <div>EMAIL: <%= @user.email %></div>
-        <div>STATEMENT: <%= @user.statement %></div>
-        <div>MEMBER SINCE: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
+        <div>Email: <%= @user.email %></div>
+        <div>Statement: <%= @user.statement %></div>
+        <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
       </div>
     </div>
     <div id="test3" class="col s12"> Come to my show </div>
