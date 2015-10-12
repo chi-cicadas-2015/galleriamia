@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     params[:user].merge!(artist: params[:artist])
     @user = User.new(user_params)
     if @user.save
+      create_default_collection(@user.id)
       session[:user_id] = @user.id
       flash[:message] = "Your account was saved successfully"
       redirect_to artists_path
@@ -49,6 +50,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :avatar, :artist)
+  end
+
+  def create_default_collection(user_id)
+    Collection.create!(user_id: user_id, name: "Portfolio")
   end
 
 end
