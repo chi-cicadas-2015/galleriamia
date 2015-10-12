@@ -6,31 +6,31 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="/welcome/index" class="brand-logo">Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <% if current_user %>
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <li><%= link_to 'Login', login_path %></li>
-          <li><%= link_to 'Signup', new_user_path %></li>
+          <li><%= link_to 'Sign Up', new_user_path %></li>
         <% end %>
         <li><%= link_to 'Artists', artists_path %></li>
-        <li><a href="">Button</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <% if current_user %>
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <li><%= link_to 'Login', login_path %></li>
-          <li><%= link_to 'Signup', new_user_path %></li>
+          <li><%= link_to 'Sign Up', new_user_path %></li>
         <% end %>
         <li><%= link_to 'Artists', artists_path %></li>
-        <li><a href="">Button</a></li>
       </ul>
     </div>
   </nav>
