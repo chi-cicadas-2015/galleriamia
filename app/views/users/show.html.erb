@@ -3,9 +3,6 @@
   <div class="user-header">
     <h1><%=@user.name%></h1>
     <%= image_tag @user.avatar.url(:thumb) %><br>
-    <% if current_user && current_user.id == @user.id %>
-      <%= link_to 'Edit Settings', edit_user_path(@user) %>
-    <% end %>
   </div>
 
   <div class="row">
@@ -37,7 +34,7 @@
              </div>
              <div class="collapsible-body">
                 <% collection.pieces.each do |piece| %>
-                  <img class="materialboxed" src="<%=piece.photo.url(:large)%>">
+                  <img id="collection_img" class="materialboxed" src="<%=piece.photo.url(:large)%>">
                 <% end %>
             </div>
           </li>
@@ -45,15 +42,32 @@
       </ul>
       <% if current_user && current_user.id == @user.id %>
         <div class="add-collection">
-          <a href="<%=new_user_collection_path(@user.id)%>"><i class="medium material-icons">add_library</i></a>
+          <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons">add_library</i></a>
         </div>
       <% end %>
     </div>
     <div id="test2" class="col s12">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">My Statement</span>
+              <p><%= @user.statement %></p>
+
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <div>Email: <%= @user.email %></div>
-        <div>Statement: <%= @user.statement %></div>
         <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
+        <% if current_user && current_user.id == @user.id %>
+          <%= link_to 'Edit Settings', edit_user_path(@user) %>
+        <% end %>
       </div>
     </div>
     <div id="test3" class="col s12"> Come to my show </div>
