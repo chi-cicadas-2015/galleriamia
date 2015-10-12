@@ -14,13 +14,18 @@ class UsersController < ApplicationController
   end
 
   def create
+
     params[:user].merge!(artist: params[:artist])
     @user = User.new(user_params)
     if @user.save
       create_default_collection(@user.id)
       session[:user_id] = @user.id
-      flash[:message] = "Your account was saved successfully"
-      redirect_to artists_path
+      if @user.artist?
+        redirect_to artist_details_user_path(@user)
+      else
+        flash[:message] = "Your account was saved successfully"
+        redirect_to artists_path
+      end
     else
       @errors = @user.errors.full_messages
       render 'new'
