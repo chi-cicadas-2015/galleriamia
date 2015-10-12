@@ -32,7 +32,7 @@ describe User do
     end
 
     it "Persists the non-artist to the database" do
-      expect(non_artist.name).to eq(User.last.name)
+      expect("Pablo NOT Picasso").to eq(non_artist.name)
     end
 
   end
