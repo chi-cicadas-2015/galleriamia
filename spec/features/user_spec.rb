@@ -33,13 +33,13 @@ feature "User - Login/Profile page" do
 
   user = User.last
 
-  p user == User.last
-
-  p user.valid?
-
-  p User.all
-
-  p user.errors
+  # p user == User.last
+  #
+  # p user.valid?
+  #
+  # p User.all
+  #
+  # p user.errors
 
   # TODO
   # scenario "User can log in" do

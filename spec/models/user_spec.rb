@@ -16,6 +16,17 @@ describe User do
                     statement: "This is the test statement",
                     artist: false)
 
+  let(:van_gogh) { User.create!(name: "Van Gogh",
+                               email: "van@gogh.com",
+                               password:"testing1234",
+                               statement: "This is the test statement",
+                               artist: true) }
+
+  let(:test_collection) {Collection.create!(name: "Test Collection",
+                                            description: "A test of a collection")}
+
+  # let(:test_piece) {Piece.create!()}
+
   describe "Artist" do
     it "Creates an artist user correctly" do
       expect(artist).to be_a(User)
@@ -56,7 +67,7 @@ describe User do
 
   end
 
-  describe "Model validations" do
+  describe "User validations" do
 
     new_user = User.new(name: "",
                         email: "",
@@ -72,18 +83,26 @@ describe User do
       expect(new_user.errors.messages[:name][0]).to eq("can't be blank")
     end
 
-    it "Email without an email is not valid" do
+    it "User without an email is not valid" do
       expect(new_user.valid?).to be(false)
     end
-    it "Email without an email receives appropriate message as feedback" do
+    it "User without an email receives appropriate message as feedback" do
       expect(new_user.errors.messages[:email][0]).to eq("can't be blank")
     end
 
   end
 
-  # can create collections and assign to the user
+  describe "User can have collections" do
 
-  # can create pieces
+    it "Adds a collection to the user" do
+      van_gogh.collections << test_collection
+      expect(van_gogh.collections.first.name).to eq(test_collection.name)
+    end
+  end
+
+  describe "User can create pieces and add to collections" do
+
+  end
 
 
 
