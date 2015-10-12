@@ -17,19 +17,19 @@
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <li><%= link_to 'Login', login_path %></li>
-          <li><a href="/users/new">Sign Up</a></li>
+          <li><%= link_to 'Signup', new_user_path %></li>
         <% end %>
         <li><%= link_to 'Artists', artists_path %></li>
         <li><a href="">Button</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <% if current_user %>
-          <li><a href="/logout">Logout</a></li>
+          <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/users/new">Sign Up</a></li>
+          <li><%= link_to 'Login', login_path %></li>
+          <li><%= link_to 'Signup', new_user_path %></li>
         <% end %>
-        <li><a href="">Artists</a></li>
+        <li><%= link_to 'Artists', artists_path %></li>
         <li><a href="">Button</a></li>
       </ul>
     </div>
