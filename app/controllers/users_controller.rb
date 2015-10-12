@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    params[:user].merge!(artist: params[:artist])
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :avatar)
+    params.require(:user).permit(:name, :email, :password, :avatar, :artist)
   end
 
 end
