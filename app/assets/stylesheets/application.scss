@@ -2,6 +2,9 @@
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 
+
+
+
 body{
   background-color: #B1BABF;
 }
@@ -49,4 +52,29 @@ nav{
   background-color: inherit;
   color: white;
   border: white solid;
+}
+
+@media (max-width: 767px) {
+  nav {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  footer {
+    display: none;
+  }
+}
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height: auto;
+   width:100%;
+   background:#999;
+}
+
+#foot_link li{
+  display: inline-block;
 }
