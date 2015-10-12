@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div class="results-header">
+    <h2>Search results for '<%=@query%>'</h2>
+  </div>
+
+  <div class="artist-results">
+    <h4>Artists</h4>
+
+    <% if @artist_results %>
+      <% @artist_results.each do |artist| %>
+        <%= link_to artist.name, user_path(artist.id) %><br>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
