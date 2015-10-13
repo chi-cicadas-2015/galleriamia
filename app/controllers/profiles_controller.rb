@@ -21,6 +21,8 @@ class ProfilesController < ApplicationController
 
   end
 
+
+
   private
   def profile_params
     params.require(:profile).permit(:top_collection, :website_url,

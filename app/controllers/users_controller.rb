@@ -37,8 +37,22 @@ class UsersController < ApplicationController
   end
 
   def update
+
     @user = User.find_by(id: params[:id])
-    if @user.update(user_params)
+    # @profile = Profile.find_by(user_id: params[:user][:profile])
+    # @profile = Profile.new(profile_params)
+    @profile.user_id = @user.id
+
+    p @profile
+
+    # @profile = params[:user][:profile]
+
+    p params[:user][:profile]
+
+    p @profile
+
+    if @user.update(user_params) #&& @profile.update(params[:user][:profile])
+      p "IN HERE"
       redirect_to @user
     else
       @errors = @user.errors.full_messages
@@ -54,7 +68,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist)
+    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist, :profile)
   end
 
   def create_default_collection(user_id)
