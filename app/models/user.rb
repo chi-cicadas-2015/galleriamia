@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  validates :name, :password, { presence: true }
+  validates :name, { presence: true }
   validates :email, { presence: true, uniqueness: true }
+  validates :password, presence: true, on: :create
 
   has_many :friends
   has_many :followers, through: :friends, source: "friend"

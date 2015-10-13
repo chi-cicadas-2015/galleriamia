@@ -34,24 +34,16 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @profile = Profile.find_by(user_id: @user.id)
   end
 
   def update
 
     @user = User.find_by(id: params[:id])
-    # @profile = Profile.find_by(user_id: params[:user][:profile])
-    # @profile = Profile.new(profile_params)
-    @profile.user_id = @user.id
+    #params[:user].merge!(profile_attributes: params[:user][:profile])
 
-    p @profile
-
-    # @profile = params[:user][:profile]
-
-    p params[:user][:profile]
-
-    p @profile
-
-    if @user.update(user_params) #&& @profile.update(params[:user][:profile])
+    # raise params.inspect
+    if @user.update(user_params)
       p "IN HERE"
       redirect_to @user
     else
@@ -68,8 +60,13 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist, :profile)
+    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist, profile_attributes: [:top_collection])
   end
+
+  # def profile_params
+  #     params.require(:profile).permit(:top_collection, :website_url,
+  #                                     :primary_medium, :headshot, :user_id)
+  # end
 
   def create_default_collection(user_id)
     Collection.create!(user_id: user_id, name: "Portfolio")
