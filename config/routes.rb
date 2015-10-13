@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   resources :users do
+    member do
+      get "/artist_details" => "profiles#new"
+      post "/artist_details" => "profiles#create"
+    end
     resources :collections do
       resources :pieces do
         resources :tags
@@ -15,9 +19,14 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
 
+
+
+
   get '/artists/random' => 'users#random_artist'
 
   get "welcome/index"
+
+  get '/search' => 'welcome#search'
 
   root "welcome#index"
 end
