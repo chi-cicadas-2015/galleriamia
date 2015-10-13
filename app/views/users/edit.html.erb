@@ -28,13 +28,7 @@
         <%= f.text_field :statement %>
       </div>
 
-      <div>
-        <%= f.label :password, "Enter Your Password to Save Changes" %><br>
-        <%= f.password_field :password %>
-      </div>
-
       <% if @user.artist? %>
-
         <%= f.fields_for :profile_attributes, @user.profile do |builder| %>
 
           <div>
@@ -51,11 +45,18 @@
             <%= builder.label :primary_medium, "Primary Medium" %><br>
             <%= builder.text_field :primary_medium %>
           </div>
-
-
         <% end %>
-
       <% end %>
+
+      <div>
+        <%= f.label :password, "Password" %><br>
+        <%= f.password_field :password %>
+      </div>
+
+      <div>
+        <%= f.label :password_confirmation, "Password Confirmation" %><br>
+        <%= f.password_field :password_confirmation %>
+      </div>
 
       <div>
         <%= f.submit %>
