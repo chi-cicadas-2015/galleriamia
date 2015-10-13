@@ -33,6 +33,30 @@
         <%= f.password_field :password %>
       </div>
 
+      <% if @user.artist? %>
+
+        <%= f.fields_for :profile_attributes, @user.profile do |builder| %>
+
+          <div>
+            <%= builder.label :top_collection, "Top Collection" %><br>
+            <%= builder.text_field :top_collection %>
+          </div>
+
+          <div>
+            <%= builder.label :website_url, "Website URL" %><br>
+            <%= builder.text_field :website_url %>
+          </div>
+
+          <div>
+            <%= builder.label :primary_medium, "Primary Medium" %><br>
+            <%= builder.text_field :primary_medium %>
+          </div>
+
+
+        <% end %>
+
+      <% end %>
+
       <div>
         <%= f.submit %>
       </div>

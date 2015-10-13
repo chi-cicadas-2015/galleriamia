@@ -10,7 +10,6 @@ gem 'bcrypt'
 
 gem 'faker'
 
-
 gem 'materialize-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

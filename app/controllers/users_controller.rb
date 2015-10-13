@@ -14,13 +14,18 @@ class UsersController < ApplicationController
   end
 
   def create
+
     params[:user].merge!(artist: params[:artist])
     @user = User.new(user_params)
     if @user.save
       create_default_collection(@user.id)
       session[:user_id] = @user.id
-      flash[:message] = "Your account was saved successfully"
-      redirect_to artists_path
+      if @user.artist?
+        redirect_to artist_details_user_path(@user)
+      else
+        flash[:message] = "Your account was saved successfully"
+        redirect_to artists_path
+      end
     else
       @errors = @user.errors.full_messages
       render 'new'
@@ -29,11 +34,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @profile = Profile.find_by(user_id: @user.id)
   end
 
   def update
+
     @user = User.find_by(id: params[:id])
+
     if @user.update(user_params)
+      p "IN HERE"
       redirect_to @user
     else
       @errors = @user.errors.full_messages
@@ -49,7 +58,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist)
+    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist, profile_attributes: [:top_collection, :website_url, :primary_medium, :headshot])
   end
 
   def create_default_collection(user_id)

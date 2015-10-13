@@ -21,8 +21,6 @@
 
                  <%= collection.name %>
 
-
-
                 <% if current_user && current_user.id == @user.id %>
                  <a class="dropdown-button waves-effect waves-circle waves-light btn-floating secondary-content settings" href='#' data-activates="collection-<%=collection.id%>"><i class="material-icons icon">settings</i></a>
                  <ul id="collection-<%=collection.id%>" class='dropdown-content'>
@@ -34,7 +32,9 @@
              </div>
              <div class="collapsible-body">
                 <% collection.pieces.each do |piece| %>
-                  <img id="collection_img" class="s2 materialboxed" src="<%=piece.photo.url(:large)%>">
+<
+                  <%= link_to image_tag(piece.photo.url(:thumb)), user_collection_piece_path(@user.id, collection.id, piece.id) %>
+
                 <% end %>
             </div>
           </li>
@@ -64,6 +64,12 @@
       </div>
       <div>
         <div>Email: <%= @user.email %></div>
+        <% if @user.artist? %>
+          <div>Name: <%= @user.name %></div>
+          <div>Primary Medium: <%= @user.profile.primary_medium %></div>
+          <div>Website: <%= @user.profile.website_url %></div>
+          <div><%= @user.profile.headshot.url(:thumb) %></div>
+        <% end %>
         <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
         <% if current_user && current_user.id == @user.id %>
           <%= link_to 'Edit Settings', edit_user_path(@user) %>
