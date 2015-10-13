@@ -28,6 +28,7 @@
                    <li class="divider"></li>
                    <li><%= link_to "Delete", user_collection_path(@user.id, collection.id), method: :delete %></li>
                  </ul>
+                 <%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %>
                 <% end %>
              </div>
              <div class="collapsible-body">
