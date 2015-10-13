@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+// Mixins
+@import "materialize/components/prefixer";
+@import "materialize/components/mixins";
+@import "materialize/components/color";
+
+// Variables;
+@import "materialize/components/variables";
+
+// Reset
+@import "materialize/components/normalize";
+
+// materialize/components
+@import "materialize/components/global";
+// @import "materialize/components/icons-material-design";
+ @import "materialize/components/grid";
+// @import "materialize/components/navbar";
+// @import "materialize/components/roboto";
+@import "materialize/components/typography";
+// @import "materialize/components/cards";
+// @import "materialize/components/toast";
+@import "materialize/components/tabs";
+// @import "materialize/components/tooltip";
+@import "materialize/components/buttons";
+@import "materialize/components/dropdown";
+// @import "materialize/components/waves";
+// @import "materialize/components/modal";
+@import "materialize/components/collapsible";
+// @import "materialize/components/chips";
+@import "materialize/components/materialbox";
+@import "materialize/components/form";
+// @import "materialize/components/table_of_contents";
+@import "materialize/components/sideNav";
+// @import "materialize/components/preloader";
+@import "materialize/components/slider";
+@import "materialize/components/date_picker/default.scss";
+@import "materialize/components/date_picker/default.date.scss";
+@import "materialize/components/date_picker/default.time.scss";
+
+body{
+  background-color: #B1BABF;
+}
+
+#show{
+  font-family: 'Righteous', sans-serif;
+}
+
+
+nav{
+  background-color: gray;
+}
+
+// .collapsible-header{
+//   font-size: 2em;
+// }
+
+.settings{
+  background-color: gray;
+  margin-top: 4px;
+  padding-left: 4px;
+}
+
+
+
+.icon{
+    position: relative;
+    bottom: 3px;
+}
+
+#blur img {
+  -webkit-filter: blur(7px) grayscale(.5) opacity(.7);
+}
+// .tabs a{
+//   font-size: 2em;
+// }
+
+#welcome_btn {
+  padding: 4px;
+  font-family: 'Righteous', sans-serif;
+  font-size: 2em;
+  margin-top: 205px;
+  text-align: center;
+  background-color: inherit;
+  color: white;
+  border: white solid 1px;
+}
+
+#spacey {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 767px) {
+  nav {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  footer {
+    display: none;
+
+  }
+}
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height: 100px;
+   width:100%;
+   background:#999;
+}
+footer h5{
+  display: inline;
+}
+
+#foot_link li{
+  display: inline-block;
+}
+
+#add{
+  width: 1em;
+}
