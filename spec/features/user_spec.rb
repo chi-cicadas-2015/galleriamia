@@ -19,45 +19,7 @@ feature "User - Landing page" do
     expect(page).to have_text("Your account was saved successfully")
     expect(page).to have_content("Rafael")
   end
-
-
 end
-
-feature "User - Login/Profile page" do
-
-  User.create!(name: "Donatello",
-               email: "donatello@fakemail.com",
-               password: "testing1234",
-               statement: "This is a test statement",
-               artist: true)
-
-  user = User.last
-
-  # p user == User.last
-  #
-  # p user.valid?
-  #
-  # p User.all
-  #
-  # p user.errors
-
-  # TODO
-  # scenario "User can log in" do
-  #   visit login_path
-  #   expect(page).to have_content("Login")
-  #   expect(page).to have_content("Sign Up")
-  #   fill_in("session_email", :with => user.email)
-  #   fill_in("session_password", :with => "testing1234")
-  #   save_and_open_page
-  #   click_button 'Save Session'
-  #   expect(page).to have_text("Sign in successful")
-  # end
-
-  scenario "User can see information about his/her profile after logging in" do
-    # TODO
-  end
-end
-
 
 feature "User - Edit settings page" do
   scenario "User clicks the Edit settings button from his/her profile page" do
