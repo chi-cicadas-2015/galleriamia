@@ -4,10 +4,42 @@
     <div class="message"><%= h flash[:message] %></div>
   <% end %>
 
-  <% @artists.each do |artist| %>
-    <div class="artist-container">
-      <h3><a href="<%=user_path(artist.id)%>"><%= artist.name %></a></h3>
-    </div>
-  <% end %>
 
+
+    <ul class="collection">
+      <% @artists.each do |artist| %>
+
+      <li class="collection-item avatar">
+        <img src="<%= artist.avatar.url(:thumb) %>" alt="" class="circle">
+        <h3><a href="<%=user_path(artist.id)%>"><%= artist.name %></a></h3>
+        <p>First Line <br>
+           Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      <!-- <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Title</span>
+        <p>First Line <br>
+           Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle green">insert_chart</i>
+        <span class="title">Title</span>
+        <p>First Line <br>
+           Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle red">play_arrow</i>
+        <span class="title">Title</span>
+        <p>First Line <br>
+           Second Line
+        </p> -->
+      </li>
+      <% end %>
+    </ul>
 </div>
