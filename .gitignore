@@ -13,5 +13,8 @@
 /tmp
 config/secrets.yml
 config/aws.yml
+public/system/profiles
+public/system/users
+
 
 coverage
