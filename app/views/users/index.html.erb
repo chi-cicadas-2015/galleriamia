@@ -6,39 +6,19 @@
 
 
 
-    <ul class="collection">
+    <ul class="container">
       <% @artists.each do |artist| %>
 
-      <li class="collection-item avatar">
-        <img src="<%= artist.avatar.url(:thumb) %>" alt="" class="circle">
+      <li class="row table-bordered breadcrumb">
+        <div class="col-sm-2"><img src="<%= artist.avatar.url(:thumb) %>" alt=""></div>
+        <div class="col-sm-8">
         <h3><a href="<%=user_path(artist.id)%>"><%= artist.name %></a></h3>
-        <p>First Line <br>
-           Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-      </li>
-      <!-- <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-           Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-      </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle green">insert_chart</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-           Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-      </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle red">play_arrow</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-           Second Line
-        </p> -->
+        <p><%= artist.profile.primary_medium if artist.profile %></p>
+        <a href="<%= artist.profile.website_url if artist.profile %>"><%= artist.profile.website_url if artist.profile%></a>
+        </div>
+        <div class="col-sm-2">
+        <img src="<%= artist.profile.headshot.url(:thumb) if artist.profile%>" alt=""  >
+        </div>
       </li>
       <% end %>
     </ul>
