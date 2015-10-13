@@ -38,7 +38,7 @@ describe User do
   describe "Artist" do
 
     describe "Persists an artist to the database" do
-      it "Artist is a user" do
+      it "Artist is a user object" do
         expect(artist).to be_a(User)
       end
 

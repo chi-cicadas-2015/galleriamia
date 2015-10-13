@@ -14,7 +14,7 @@ describe Collection do
 
   describe "A collection is created correctly" do
 
-    it "A collection is a collection" do
+    it "Creates a collection object" do
       expect(test_collection).to be_a(Collection)
     end
 
