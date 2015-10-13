@@ -64,6 +64,12 @@
       </div>
       <div>
         <div>Email: <%= @user.email %></div>
+        <% if @user.artist? %>
+          <div>Name: <%= @user.name %></div>
+          <div>Primary Medium: <%= @user.profile.primary_medium %></div>
+          <div>Website: <%= @user.profile.website_url %></div>
+          <div><%= @user.profile.headshot.url(:thumb) %></div>
+        <% end %>
         <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
         <% if current_user && current_user.id == @user.id %>
           <%= link_to 'Edit Settings', edit_user_path(@user) %>
