@@ -21,23 +21,6 @@ class ProfilesController < ApplicationController
 
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-  #   @profile = Profile.find_by(user_id: @user.id)
-  # end
-
-  # def update
-  #   @user = User.find(params[:id])
-  #   @profile = Profile.find_by(user_id: @user.id)
-  #   if @profile.update(profile_params)
-  #     flash[:message] = "Your account was updated successfully"
-  #     redirect_to artists_path
-  #   else
-  #     flash[:message] = "Something bad happened"
-  #     render 'edit'
-  #   end
-  # end
-
   private
     def profile_params
       params.require(:profile).permit(:top_collection, :website_url,
