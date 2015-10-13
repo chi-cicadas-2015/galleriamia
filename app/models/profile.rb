@@ -1,6 +1,6 @@
 class Profile < ActiveRecord::Base
 
-  belongs_to :artist, class_name: User
+  belongs_to :artist, class_name: "User"
 
   has_attached_file :headshot,
                     :styles => { :thumb => "100x100>"}
