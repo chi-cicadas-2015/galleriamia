@@ -10,10 +10,7 @@ gem 'bcrypt'
 
 gem 'faker'
 
-gem 'rMeetup'
-# gem 'meetup_client'
-
-gem 'geocoder'
+gem 'meetup_client'
 
 gem 'materialize-sass'
 # Use SCSS for stylesheets
