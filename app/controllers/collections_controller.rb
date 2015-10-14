@@ -48,6 +48,8 @@ class CollectionsController < ApplicationController
 
       @collection.pieces << @piece
 
+      @collection.save
+      
       render inline: "Collection Updated."
 
     else
