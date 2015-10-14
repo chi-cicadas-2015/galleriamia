@@ -33,4 +33,7 @@
   <div>
     <%= link_to "Add a new piece to the collection", new_user_collection_piece_path(current_user.id, @collection.id) %>
   </div>
+  <div>
+    <%= link_to "Delete", user_collection_path(current_user.id, @collection.id), method: :delete %>
+  </div>
 </div>
