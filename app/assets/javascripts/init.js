@@ -10,5 +10,6 @@ $( document ).ready(function(){
     transition: 1000,
   });
 
-  addPieceToCollection();
+  showUserCollections();
+  // addPieceToCollection();
 })

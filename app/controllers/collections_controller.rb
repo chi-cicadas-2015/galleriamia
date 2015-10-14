@@ -41,6 +41,22 @@ class CollectionsController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
+  def allocate
+    if request.xhr?
+      @collection = Collection.find_by(id: params[:collection_id])
+      @piece = Piece.find(params[:piece_id])
+
+      @collection.pieces << @piece
+
+      render inline: "Collection Updated."
+
+    else
+      @user = User.find_by(id: params[:user_id])
+      redirect_to @user
+    end
+
+  end
+
   private
   def collection_params
     params.require(:collection).permit(:user_id, :name, :description)
