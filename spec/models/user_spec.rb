@@ -1,29 +1,28 @@
 require 'rails_helper'
 
-User.delete_all
-
 describe User do
 
-  artist = User.create!(name: "Pablo Picasso",
+  let(:artist) { User.create!(name: "Pablo Picasso",
                     email: "testing@mail.com",
                     password:"testing1234",
                     statement: "This is the test statement",
                     artist: true,
-                    avatar: File.new("#{Rails.root}/public/imgs/favicon125x108.png"))
+                    avatar: File.new("#{Rails.root}/public/imgs/favicon125x108.png"),
+                    profile: artist_profile) }
 
-  artist_profile = Profile.create!(top_collection: "Years of Time",
+  let(:artist_profile) { Profile.create!(top_collection: "Years of Time",
                                    website_url: "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
                                    primary_medium: "Oil",
-                                   headshot: File.new("#{Rails.root}/public/imgs/favicon63x54.png"))
+                                   headshot: File.new("#{Rails.root}/public/imgs/favicon63x54.png")) }
 
-  artist.profile = artist_profile
+  # let(:artist.profile) = artist_profile
 
-  non_artist = User.create(name: "Pablo NOT Picasso",
+  let(:non_artist) { User.create(name: "Pablo NOT Picasso",
                     email: "friend@mail.com",
                     password:"testing1234",
                     statement: "This is the test statement",
                     artist: false,
-                    avatar: File.new("#{Rails.root}/public/imgs/favicon63x54.png"))
+                    avatar: File.new("#{Rails.root}/public/imgs/favicon63x54.png")) }
 
   let(:van_gogh) { User.create!(name: "Van Gogh",
                                email: "van@gogh.com",
@@ -120,17 +119,18 @@ describe User do
 
   describe "User validations" do
 
-    new_user = User.new(name: "",
+    let(:new_user) { User.new(name: "",
                         email: "",
                         password:"testing1234",
                         statement: "This is the test statement",
-                        artist: false)
+                        artist: false) }
 
     it "User without a name is not valid" do
       expect(new_user.valid?).to be(false)
     end
 
     it "User without a name is receives appropriate message as feedback" do
+      new_user.valid?
       expect(new_user.errors.messages[:name][0]).to eq("can't be blank")
     end
 
@@ -138,6 +138,7 @@ describe User do
       expect(new_user.valid?).to be(false)
     end
     it "User without an email receives appropriate message as feedback" do
+      new_user.valid?
       expect(new_user.errors.messages[:email][0]).to eq("can't be blank")
     end
 
