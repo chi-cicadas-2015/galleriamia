@@ -28,6 +28,11 @@
         <%= f.text_field :statement %>
       </div>
 
+      <div>
+        <%= f.label :avatar, "Avatar" %><br>
+        <%= f.file_field :avatar %>
+      </div>
+
       <% if @user.artist? %>
         <%= f.fields_for :profile_attributes, @user.profile do |builder| %>
 
@@ -44,6 +49,11 @@
           <div>
             <%= builder.label :primary_medium, "Primary Medium" %><br>
             <%= builder.text_field :primary_medium %>
+          </div>
+
+          <div>
+            <%= builder.label :headshot, "Headshot" %><br>
+            <%= builder.file_field :headshot %>
           </div>
         <% end %>
       <% end %>
