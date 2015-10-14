@@ -94,4 +94,10 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  # This helps clean any uploaded files that were uploaded during a test. 
+  # https://github.com/thoughtbot/paperclip#testing
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
 end

@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
-   <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+   <!-- <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'> -->
 
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -17,48 +17,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <!-- <nav class="navbar navbar-default">
-    <div>
-      <a href="/welcome/index" class="brand-logo center">Galleria Mia</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <% if current_user %>
-          <li><%= link_to 'Logout', logout_path %></li>
-        <% else %>
-          <li><%= link_to 'Login', login_path %></li>
-          <li><%= link_to 'Sign Up', new_user_path %></li>
-        <% end %>
-        <li><%= link_to 'Artists', artists_path %></li>
-        <li><form action="<%=search_path%>">
-          <div class="input-field">
-            <input id="search" type="search" name="query" required>
-            <label for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-        </form></li>
-      </ul>
-      <ul  class="side-nav" id="mobile-demo">
-        <% if current_user %>
-          <li><%= link_to 'Logout', logout_path %></li>
-        <% else %>
-          <li><%= link_to 'Login', login_path %></li>
-          <li><%= link_to 'Sign Up', new_user_path %></li>
-        <% end %>
-        <li><%= link_to 'Artists', artists_path %></li>
-        <li><form>
-          <div class="input-field">
-            <input id="search" type="search" required>
-            <label for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-        </form></li>
-      </ul>
-    </div>
-  </nav> -->
 
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -69,12 +30,14 @@
         <a class="navbar-brand" href="/welcome/index">Galleria Mia</a>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><a href="/users/<%= current_user.id %>"><%= current_user.name %></a></li>
+          <% end %>
             <li><%= link_to 'Artists', artists_path %></li>
             <li><%= link_to 'Events', events_path %></li>
           <% if current_user %>
@@ -84,45 +47,19 @@
             <li><%= link_to 'Sign Up', new_user_path %></li>
           <% end %>
           <li><form action="<%=search_path%>">
-            <div class="input-field">
+            <div id="searchy" class="input-field">
               <input id="search" type="search" name="query" required>
               <label for="search"><i class="material-icons">search</i></label>
               <i class="material-icons">close</i>
             </div>
           </form></li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </nav>
 
-
-  <% if current_user %>
-    <%= image_tag current_user.avatar.url(:thumb) %> | <a href="/users/<%= current_user.id %>"><%= current_user.name %></a>
-  <% end %>
 
 <%= yield %>
 
 </body>
-<!-- <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text"><a href="/welcome/index">Galleria Mia</a></h5>
-                <ul id="foot_link" class="right">
-                  <li><%= link_to 'Artists', artists_path %></a></li>
-                  <li><form>
-                    <div class="input-field">
-                      <input id="search" type="search" required>
-                      <label for="search"><i class="material-icons">search</i></label>
-                      <i class="material-icons">close</i>
-                    </div>
-                  </form></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </footer> -->
-
 </html>
