@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
     params[:user].merge!(artist: params[:artist])
     @user = User.new(user_params)
     if @user.save
@@ -38,16 +37,49 @@ class UsersController < ApplicationController
   end
 
   def update
-
     @user = User.find_by(id: params[:id])
+    @old_avatar = @user.avatar
+    @old_headshot = @user.profile.headshot
 
-    if @user.update(user_params)
-      p "IN HERE"
-      redirect_to @user
+    #if both are full
+    if params[:user].include?("avatar") && params[:user][:profile_attributes].include?("headshot")
+      if @user.update(user_params)
+        redirect_to @user
+      else
+        @errors = @user.errors.full_messages
+        render 'edit'
+      end
+    #if only avatar is empty
+    elsif params[:user].exclude?("avatar") && params[:user][:profile_attributes].include?("headshot")
+      params[:user].merge!(avatar: @old_avatar)
+      if @user.update(user_params)
+        redirect_to @user
+      else
+        @errors = @user.errors.full_messages
+        render 'edit'
+      end
+    #if only headshot is empty
+    elsif params[:user].include?("avatar") && params[:user][:profile_attributes].exclude?("headshot")
+      params[:user][:profile_attributes].merge!(headshot: @old_headshot)
+      # raise params[:user][:profile_attributes].inspect
+      if @user.update(user_params)
+        redirect_to @user
+      else
+        @errors = @user.errors.full_messages
+        render 'edit'
+      end
+    #if both are empty
     else
-      @errors = @user.errors.full_messages
-      render 'edit'
+      params[:user].merge!(avatar: @old_avatar)
+      params[:user][:profile_attributes].merge!(headshot: @old_headshot)
+      if @user.update(user_params)
+        redirect_to @user
+      else
+        @errors = @user.errors.full_messages
+        render 'edit'
+      end
     end
+
   end
 
   def random_artist
@@ -57,12 +89,14 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :statement, :avatar, :artist, profile_attributes: [:top_collection, :website_url, :primary_medium, :headshot])
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :statement, :artist, :avatar, profile_attributes: [:top_collection, :website_url, :primary_medium, :headshot])
+    end
 
-  def create_default_collection(user_id)
-    Collection.create!(user_id: user_id, name: "Portfolio")
-  end
+
+
+    def create_default_collection(user_id)
+      Collection.create!(user_id: user_id, name: "Portfolio")
+    end
 
 end

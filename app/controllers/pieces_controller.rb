@@ -47,10 +47,29 @@ class PiecesController < ApplicationController
   def destroy
     @user = User.find_by(id: params[:user_id])
     @piece = Piece.find(params[:id])
-    @piece.destroy
-    redirect_to @user
+    if @piece.destroy
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
+  def allocate
+
+    if request.xhr?
+      @user = User.find(params[:user_id])
+      render "_add_collections.html.erb", layout: false
+    else
+      @user = User.find_by(id: params[:user_id])
+      @collection = Collection.find_by(id: params[:collection_id])
+      @piece = Piece.find(params[:id])
+      redirect_to @user
+    end
+  end
+
+  def add_to_collection
+
+  end
 
   private
     def piece_params
