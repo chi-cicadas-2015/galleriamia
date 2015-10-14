@@ -33,7 +33,7 @@
              </div>
              <div class="collapsible-body">
                 <% collection.pieces.each do |piece| %>
-<
+
                   <%= link_to image_tag(piece.photo.url(:thumb)), user_collection_piece_path(@user.id, collection.id, piece.id) %>
 
                 <% end %>

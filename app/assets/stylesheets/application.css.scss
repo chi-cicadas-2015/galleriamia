@@ -42,6 +42,10 @@ body{
   background-color: #B1BABF;
 }
 
+a {
+  text-decoration: none !important
+}
+
 #show{
   font-family: 'Righteous', sans-serif;
 }
@@ -61,7 +65,9 @@ nav{
   padding-left: 4px;
 }
 
-
+#searchy{
+  width: auto;
+}
 
 .icon{
     position: relative;
