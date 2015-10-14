@@ -8,9 +8,8 @@
   <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a class="active" href="#test1">Collections</a></li>
-        <li class="tab col s3 "><a href="#test2">About</a></li>
-        <li class="tab col s3"><a href="#test3">Events</a></li>
+        <li class="tab col s3"><a class="blue-text" href="#test1">Collections</a></li>
+        <li class="tab col s3"><a href="#test2">About</a></li>
       </ul>
     </div>
     <div id="test1" class="col s12">
@@ -37,7 +36,7 @@
       </ul>
       <% if current_user && current_user.id == @user.id %>
         <div class="add-collection">
-          <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons">library_add</i></a>
+          <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons icon_color">library_add</i></a>
         </div>
       <% end %>
     </div>
@@ -71,7 +70,6 @@
         <% end %>
       </div>
     </div>
-    <div id="test3" class="col s12"> Come to my show </div>
   </div>
 
 </div>
