@@ -44,4 +44,18 @@ describe UsersController do
     end
   end
 
+  describe "GET #edit" do
+
+    let(:artist_profile) { Profile.create!(top_collection: "Years of Time",
+                                     website_url: "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+                                     primary_medium: "Oil",
+                                     headshot: File.new("#{Rails.root}/public/imgs/favicon63x54.png")) }
+
+    it "assigns the artist as @user" do
+      van_gogh.profile = artist_profile
+      get :edit, id: van_gogh.id
+      expect(assigns(:user)).to eq(van_gogh)
+    end
+  end
+
 end
