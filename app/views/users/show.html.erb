@@ -3,7 +3,7 @@
   <div class="user-header">
     <h1><%=@user.name%></h1>
     <%= image_tag @user.avatar.url(:thumb) %><br>
-    <% if current_user.artist? %>
+    <% if @user.artist? %>
       <%= image_tag @user.profile.headshot.url(:thumb) %>
     <% end %>
   </div>
