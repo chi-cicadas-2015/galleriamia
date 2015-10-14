@@ -35,7 +35,6 @@ class EventsController < ApplicationController
       if event["venue"]["city"].downcase == city.downcase
         results << event
       end
-      sleep 0.1
     end
     return results
   end
