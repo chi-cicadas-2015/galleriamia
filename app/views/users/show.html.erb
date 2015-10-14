@@ -22,13 +22,7 @@
                  <%= collection.name %>
 
                 <% if current_user && current_user.id == @user.id %>
-                 <!-- <a id="collection-<%=collection.id%>" class="btn secondary-content" href='<%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %>'><i class="material-icons icon">settings</i></a>
-                 <ul id="collection-<%=collection.id%>" class='dropdown-content'> -->
-
                    <button class="secondary-content btn-xs settings"><%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %></button>
-                   <!-- <li class="divider"></li>
-                   <li><%= link_to "Delete", user_collection_path(@user.id, collection.id), method: :delete %></li> -->
-
                 <% end %>
              </div>
              <div class="collapsible-body">
