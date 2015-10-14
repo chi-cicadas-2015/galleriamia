@@ -6,7 +6,13 @@ Rails.application.routes.draw do
       post "/artist_details" => "profiles#create"
     end
     resources :collections do
+      member do
+        get '/add_to_collection' => "collections#allocate"
+      end
       resources :pieces do
+        member do
+          get '/add_to_collection' => "pieces#allocate"
+        end
         resources :tags
       end
     end
