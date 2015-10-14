@@ -47,8 +47,11 @@ class PiecesController < ApplicationController
   def destroy
     @user = User.find_by(id: params[:user_id])
     @piece = Piece.find(params[:id])
-    @piece.destroy
-    redirect_to "show"
+    if @piece.destroy
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def allocate
@@ -56,7 +59,6 @@ class PiecesController < ApplicationController
     if request.xhr?
       @user = User.find(params[:user_id])
       render "_add_collections.html.erb", layout: false
-      # render inline: "<% @user.collections.each do |c| %> <p><%= c.name %></p> <% end %>"
     else
       @user = User.find_by(id: params[:user_id])
       @collection = Collection.find_by(id: params[:collection_id])
@@ -66,7 +68,7 @@ class PiecesController < ApplicationController
   end
 
   def add_to_collection
-    
+
   end
 
   private
