@@ -33,7 +33,11 @@
   <div class="btn btn-default">
     <%= link_to "Add Piece", new_user_collection_piece_path(current_user.id, @collection.id) %>
   </div>
-    
+
+
+
+  <div>
+    <%= link_to "Delete", user_collection_path(current_user.id, @collection.id), method: :delete %>
   </div>
 
 </div>
