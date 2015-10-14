@@ -18,7 +18,9 @@ class CollectionsController < ApplicationController
   end
 
   def edit
-    @collection = Collection.find_by(id: params[:id])
+    if authorized?
+      @collection = Collection.find_by(id: params[:id])
+    end
   end
 
   def update

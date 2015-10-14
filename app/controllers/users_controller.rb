@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+  before_action :authorize, only: [:edit, :update]
 
   def index
     @artists = User.where(artist: true)
@@ -32,8 +34,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    @profile = Profile.find_by(user_id: @user.id)
+      @user = User.find(params[:id])
+      @profile = Profile.find_by(user_id: @user.id)
   end
 
   def update
