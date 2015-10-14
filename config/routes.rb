@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     end
     resources :collections do
       resources :pieces do
+        member do
+          get '/add_to_collection' => "pieces#allocate"
+        end
         resources :tags
       end
     end
