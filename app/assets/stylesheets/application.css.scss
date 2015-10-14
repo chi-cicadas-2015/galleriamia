@@ -62,13 +62,20 @@ a {
 .user-header h1{
   display: inline-block;
 }
-
-#profile_avatar {
-
+.card {
+  background-color: #2D3E50;
 }
 
-.blue-text {
-    color: #2D3E50;
+#info {
+  margin-left: 10px;
+}
+
+.hline {
+  width:100%; height:1px; background: #fff
+}
+
+.tabs {
+    background-color: #2D3E50;
 }
 
 .icon_color{
