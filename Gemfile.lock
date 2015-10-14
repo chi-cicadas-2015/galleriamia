@@ -150,6 +150,7 @@ GEM
       mime-types (>= 1.16, < 3)
     materialize-sass (0.97.1)
       sass (~> 3.3)
+    meetup_client (0.1.0)
     mime-types (2.6.2)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
@@ -258,6 +259,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   materialize-sass
+  meetup_client
   paperclip (~> 4.3)
   pg
   rails (= 4.2.4)

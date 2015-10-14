@@ -10,6 +10,8 @@ gem 'bcrypt'
 
 gem 'faker'
 
+gem 'meetup_client'
+
 gem 'materialize-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
