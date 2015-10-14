@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include ApplicationHelper
-  before_action :authorize, only: [:edit, :update]
+  before_action :authorize, :correct_user, only: [:edit, :update]
 
   def index
     @artists = User.where(artist: true)
