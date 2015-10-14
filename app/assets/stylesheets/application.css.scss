@@ -51,10 +51,21 @@ a {
   text-decoration: none !important
 }
 
+.class-title p{
+  word-wrap: break-word;
+}
+
 #show{
   font-family: 'Righteous', sans-serif;
 }
 
+.user-header h1{
+  display: inline-block;
+}
+
+#profile_avatar {
+
+}
 
 .blue-text {
     color: #2D3E50;
@@ -93,12 +104,11 @@ a {
     bottom: 3px;
 }
 
+//// Splash Page ////
+
 #blur img {
   -webkit-filter: blur(7px) grayscale(.5) opacity(.7);
 }
-// .tabs a{
-//   font-size: 2em;
-// }
 
 #welcome_btn {
   padding: 4px;

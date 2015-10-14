@@ -1,11 +1,11 @@
 <body id="show">
 <div class="container">
   <div class="user-header">
-    <h1><%=@user.name%></h1>
-    <%= image_tag @user.avatar.url(:thumb) %><br>
-    <% if current_user.artist? %>
+    <h1 class="col-xs-4 "><%=@user.name%></h1>
+    <h1 id="profile_avatar" class="col-xs-offset-3 col-sm-offset-6"><%= image_tag @user.avatar.url(:thumb) %></h1>
+    <!-- <% if current_user.artist? %>
       <%= image_tag @user.profile.headshot.url(:thumb) %>
-    <% end %>
+    <% end %> -->
   </div>
 
   <div class="row">
@@ -48,30 +48,41 @@
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">My Statement</span>
-              <p><%= @user.statement %></p>
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <div class="media-object"><%= image_tag @user.profile.headshot.url(:thumb) %></div>
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h5 class="card-title white-text">My Statement</h5>
+                  <p><%= @user.statement %></p>
+                </div>
+              </div>
 
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
       <div>
         <div>Email: <%= @user.email %></div>
         <% if @user.artist? %>
           <div>Name: <%= @user.name %></div>
           <div>Primary Medium: <%= @user.profile.primary_medium %></div>
           <div>Website: <%= @user.profile.website_url %></div>
-          <div>Headshot: <%= image_tag @user.profile.headshot.url(:thumb) %></div>
+          <!-- <div>Headshot: <%= image_tag @user.profile.headshot.url(:thumb) %></div> -->
         <% end %>
         <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
         <% if current_user && current_user.id == @user.id %>
           <%= link_to 'Edit Settings', edit_user_path(@user) %>
         <% end %>
       </div>
+    </div>
+    <div class="card-action">
+      <a href="#">This is a link</a>
+      <a href="#">This is a link</a>
+    </div>
+  </div>
+</div>
+</div>
     </div>
   </div>
 
