@@ -34,11 +34,33 @@ class CollectionsController < ApplicationController
   end
 
   def destroy
+
     @user = User.find_by(id: params[:user_id])
     @collection = Collection.find_by(id: params[:id])
     @collection.destroy
 
     redirect_to user_path(@user.id)
+  end
+
+  def allocate
+    if request.xhr?
+      @collection = Collection.find_by(id: params[:collection_id])
+      @piece = Piece.find(params[:piece_id])
+
+      if @collection.pieces.include?(@piece)
+        @collection.pieces = @collection.pieces - [@piece]
+      else
+        @collection.pieces << @piece
+      end
+
+      @collection.save
+      render inline: "Collection Updated."
+
+    else
+      @user = User.find_by(id: params[:user_id])
+      redirect_to @user
+    end
+
   end
 
   private
