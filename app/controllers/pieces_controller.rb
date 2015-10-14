@@ -48,9 +48,23 @@ class PiecesController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @piece = Piece.find(params[:id])
     @piece.destroy
-    redirect_to @user
+    redirect_to "show"
   end
 
+  def allocate
+
+    if request.xhr?
+      p params[:user_id]
+      render inline: "this"
+    else
+      @user = User.find_by(id: params[:user_id])
+      @collection = Collection.find_by(id: params[:collection_id])
+      @piece = Piece.find(params[:id])
+      redirect_to @user
+    end
+
+
+  end
 
   private
     def piece_params
