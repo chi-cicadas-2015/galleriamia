@@ -14,10 +14,11 @@
         <div class="col-sm-8">
         <h3><a href="<%=user_path(artist.id)%>"><%= artist.name %></a></h3>
         <p><%= artist.profile.primary_medium if artist.profile %></p>
-        <a href="<%= artist.profile.website_url if artist.profile %>"><%= artist.profile.website_url if artist.profile%></a>
         </div>
         <div class="col-sm-2">
-        <img src="<%= artist.profile.headshot.url(:thumb) if artist.profile%>" alt=""  >
+        <% if artist.profile %>
+         <img src="<%= artist.profile.headshot.url(:thumb) %>" alt="">
+        <% end %>
         </div>
       </li>
       <% end %>
