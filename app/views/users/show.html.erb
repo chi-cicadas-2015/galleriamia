@@ -22,18 +22,12 @@
                  <%= collection.name %>
 
                 <% if current_user && current_user.id == @user.id %>
-                 <a class="dropdown-button waves-effect waves-circle waves-light btn-floating secondary-content settings" href='#' data-activates="collection-<%=collection.id%>"><i class="material-icons icon">settings</i></a>
-                 <ul id="collection-<%=collection.id%>" class='dropdown-content'>
-                   <li><%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %></li>
-                   <li class="divider"></li>
-                   <li><%= link_to "Delete", user_collection_path(@user.id, collection.id), method: :delete %></li>
-                 </ul>
-                 <%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %>
+                   <button class="secondary-content btn-xs settings"><%= link_to "Edit", edit_user_collection_path(@user.id, collection.id), method: :get %></button>
                 <% end %>
              </div>
              <div class="collapsible-body">
                 <% collection.pieces.each do |piece| %>
-<
+
                   <%= link_to image_tag(piece.photo.url(:thumb)), user_collection_piece_path(@user.id, collection.id, piece.id) %>
 
                 <% end %>
@@ -43,7 +37,7 @@
       </ul>
       <% if current_user && current_user.id == @user.id %>
         <div class="add-collection">
-          <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons">add_library</i></a>
+          <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons">library_add</i></a>
         </div>
       <% end %>
     </div>
