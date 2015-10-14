@@ -46,10 +46,13 @@ class CollectionsController < ApplicationController
       @collection = Collection.find_by(id: params[:collection_id])
       @piece = Piece.find(params[:piece_id])
 
-      @collection.pieces << @piece
+      if @collection.pieces.include?(@piece)
+        @collection.pieces = @collection.pieces - [@piece]
+      else
+        @collection.pieces << @piece
+      end
 
       @collection.save
-      
       render inline: "Collection Updated."
 
     else

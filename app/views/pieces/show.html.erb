@@ -22,7 +22,7 @@
 
   <% if current_user && current_user.artist == nil %>
     <div>
-      <%= link_to 'addToCollection', add_to_collection_user_collection_piece_path(current_user.id, @collection.id, @piece.id), id: "addToCollection" %>
+      <%= link_to 'Curate Item', add_to_collection_user_collection_piece_path(current_user.id, @collection.id, @piece.id), id: "addToCollection" %>
     </div>
   <% end %>
 
