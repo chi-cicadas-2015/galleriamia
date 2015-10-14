@@ -16,17 +16,16 @@ Rails.application.routes.draw do
         resources :tags
       end
     end
-    resources :events
   end
+
+  resources :events, except: :show
+  get '/events/search' => 'events#search', as: "events_search"
 
   get '/artists' => 'users#index'
 
   get "/login" => "sessions#new", as: "login"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
-
-
-
 
   get '/artists/random' => 'users#random_artist'
 
