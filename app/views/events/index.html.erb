@@ -1,7 +1,9 @@
-<li><form action="<%=search_path%>">
-  <div class="input-field">
-    <input id="search" type="search" name="query" required>
-    <label for="search"><i class="material-icons">search</i></label>
-    <i class="material-icons">close</i>
-  </div>
-</form></li>
+<h1>Art Events Near You</h1>
+
+<%= form_tag(events_search_path, method: :get) do %>
+  <%= label_tag(:zip, "Zip:") %>
+  <%= text_field_tag(:zip) %>
+  <%= label_tag(:distance, "Distance:") %>
+  <%= text_field_tag(:distance) %>
+  <%= submit_tag("Search") %>
+<% end %>

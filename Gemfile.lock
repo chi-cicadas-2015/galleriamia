@@ -83,6 +83,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arel (6.0.3)
     aws-sdk (1.66.0)
       aws-sdk-v1 (= 1.66.0)
@@ -96,6 +97,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    buftok (0.2.0)
     builder (3.2.2)
     byebug (6.0.2)
     capybara (2.5.0)
@@ -131,10 +133,18 @@ GEM
     execjs (2.6.0)
     faker (1.5.0)
       i18n (~> 0.5)
+    geocoder (1.2.11)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    http (0.9.7)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    http-form_data (1.0.1)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -165,6 +175,11 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.18.3)
+    rMeetup (2.1.0)
+      buftok (~> 0.2)
+      http (~> 0.7)
+      http_parser.rb (~> 0.6)
+      json (~> 1.8)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -255,11 +270,13 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   coveralls
   faker
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   materialize-sass
   paperclip (~> 4.3)
   pg
+  rMeetup
   rails (= 4.2.4)
   rspec-core!
   rspec-expectations!
