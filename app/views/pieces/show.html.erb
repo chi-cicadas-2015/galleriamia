@@ -9,7 +9,7 @@
   </div>
 
   <div>
-    Dimensions: <%= @piece.size %>
+    Year: <%= @piece.year %>
   </div>
 
   <div>
@@ -17,7 +17,11 @@
   </div>
 
   <div>
-    Description: <%= @piece.description %>
+    Dimensions: <%= @piece.size %>
+  </div>
+
+  <div>
+    Remarks: <%= @piece.description %>
   </div>
 
   <% if current_user && current_user.artist == nil %>
