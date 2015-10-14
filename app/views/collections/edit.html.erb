@@ -1,7 +1,5 @@
 <div class="container">
 
-  <h1>Edit Collection: <%=@collection.name%></h1>
-
   <% if @errors %>
     <ul class="errors">
       <% @errors.each do |error| %>
@@ -10,7 +8,10 @@
     </ul>
   <% end %>
 
-  <div class="edit-collection-form">
+  <div class="form-horizontal">
+
+  <legend>Edit Collection "<%=@collection.name%>"</legend>
+
     <%= form_for :collection, url: user_collection_path(current_user.id, @collection.id), method: :put, :html => { :multipart => true } do |f| %>
 
       <div>
@@ -28,9 +29,11 @@
       </div>
 
     <% end %>
+  <br>
+  <div class="btn btn-default">
+    <%= link_to "Add Piece", new_user_collection_piece_path(current_user.id, @collection.id) %>
+  </div>
+    
   </div>
 
-  <div>
-    <%= link_to "Add a new piece to the collection", new_user_collection_piece_path(current_user.id, @collection.id) %>
-  </div>
 </div>
