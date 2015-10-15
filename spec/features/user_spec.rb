@@ -46,24 +46,105 @@ feature "User features" do
 
     context "User logs in" do
 
-      def user_logs_in
+      def user_logs_in(input_user)
         visit '/login'
-        fill_in "Email", :with => artist.email
-        fill_in "Password", :with => artist.password
+        fill_in "Email", :with => input_user.email
+        fill_in "Password", :with => input_user.password
         click_button("Save Session")
+        visit user_path(input_user.id)
       end
 
-      it "User clicks the 'Edit' button in the About tab" do
-        user_logs_in
-        visit user_path(artist.id)
+      def click_about_then_edit_profile
         click_link('About')
         click_link('Edit Profile')
-        expect(page).to render_template(:edit)
       end
 
-      it "User can see what information to edit" do
-        visit edit_user_path(artist)
-        expect(page).to have_text("Name")
+      def login_and_edit
+        user_logs_in(artist)
+        click_about_then_edit_profile
+      end
+
+      def persist_non_user_to_database
+        not_artist.save
+      end
+
+      it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
+        login_and_edit
+        expect(page).to have_content("the user's edit page")
+      end
+
+      it "User can see prefilled name in the form" do
+        login_and_edit
+        expect(page).to have_field('Name', with: artist.name)
+      end
+
+      it "User can see prefilled email in the form" do
+        login_and_edit
+        expect(page).to have_field('Email', with: artist.email)
+      end
+
+      it "User can see prefilled statement in the form" do
+        login_and_edit
+        expect(page).to have_field('Statement', with: artist.statement)
+      end
+
+      it "User can upload a new avatar" do
+        login_and_edit
+        expect(page).to have_field('Avatar')
+      end
+
+      context "An artist can edit additional profile information" do
+
+        it "Artist can edit the Top collection field" do
+          login_and_edit
+          expect(page).to have_field('Top Collection')
+        end
+
+        it "Artist can edit the Website field" do
+          login_and_edit
+          expect(page).to have_field('Website URL')
+        end
+
+        it "Artist can edit the Primary Medium field" do
+          login_and_edit
+          expect(page).to have_field('Primary Medium')
+        end
+
+        it "Artist can edit the Headshot field" do
+          login_and_edit
+          expect(page).to have_field('Headshot')
+        end
+
+        it "Artist can edit the password field" do
+          login_and_edit
+          expect(page).to have_field('Password')
+          expect(page).to have_field('Password Confirmation')
+        end
+      end
+
+      context "Artist fills in information and the information persists to the database" do
+
+        it "Artist changes the Email field" do
+          login_and_edit
+          fill_in "Email", :with => "new_email@testing.com"
+          click_button "Save User"
+          artist_post_save = User.find(artist.id)
+          expect(artist.email).to_not eq(artist_post_save.email)
+        end
+      end
+
+      context "Only artists can edit additional profile information" do
+
+        it "Non-artist can not see additional profile data in the edit page" do
+          persist_non_user_to_database
+          expect(page).to_not have_field("Website URL")
+        end
+
+        it "Non-artist can not see additional profile data because he/she doesn't have an additional profile" do
+          persist_non_user_to_database
+          profile = Profile.find_by(user_id: not_artist.id)
+          expect(profile).to be nil
+        end
       end
     end
   end
