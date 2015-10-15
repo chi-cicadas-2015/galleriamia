@@ -1,19 +1,23 @@
-<h1><%= @piece.title %></h1>
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+  <h1><%= @piece.title %></h1>
 
 
-<div>
-  <%= image_tag @piece.photo.url(:large) %>
   <div>
-    <%= form_for :piece, url: user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :patch, :html => { :multipart => true } do |f| %>
+    <%= image_tag @piece.photo.url(:large) %>
+    <div>
+      <%= form_for :piece, url: user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :patch, :html => { :multipart => true } do |f| %>
 
-      <%= render partial: 'form', locals: { f: f } %>
-
-
-      <div>
-        <%= f.submit "Save Piece", class: "custom-button" %>
-      </div>
+        <%= render partial: 'form', locals: { f: f } %>
 
 
-    <% end %>
+        <div>
+          <%= f.submit "Save Piece", class: "custom-button" %>
+        </div>
+
+
+      <% end %>
+    </div>
   </div>
 </div>
+<div class="col-sm-1"></div>
