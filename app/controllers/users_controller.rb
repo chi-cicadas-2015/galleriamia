@@ -58,9 +58,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    raise params.inspect
     @user.destroy
-    redirect_to login_path
+    p @user
+    session.clear
+    redirect_to artists_path
   end
 
   private
