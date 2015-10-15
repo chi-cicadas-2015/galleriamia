@@ -45,8 +45,8 @@
           <% end %>
           <% if current_user && @user.artist && !current_user.friends.find_by(friend_id: @user.id)  %>
             <a href="<%=new_user_friend_path(@user.id)%>"><i class="secondary-content medium material-icons icon_color">favorite_border</i></a>
-          <% else %>
-            <a href="<%=new_user_friend_path(@user.id)%>"><i class="secondary-content medium material-icons icon_color">favorite</i></a>
+          <% elsif current_user && @user.artist %>
+            <a href="<%=edit_user_friend_path(@user.id, current_user.id)%>"><i class="secondary-content medium material-icons icon_color">favorite</i></a>
           <% end %>
         </div>
     </div>
@@ -57,9 +57,11 @@
             <div class="card-content white-text">
               <div class="media">
                 <div class="media-left">
-                  <a href="#">
-                    <div class="media-object"><%= image_tag @user.profile.headshot.url(:thumb) %></div>
-                  </a>
+                  <% if @user.artist %>
+                    <a href="#">
+                      <div class="media-object"><%= image_tag @user.profile.headshot.url(:thumb) %></div>
+                    </a>
+                  <% end %>
                 </div>
                 <div class="media-body">
                   <h5 class="card-title white-text">My Statement</h5>
