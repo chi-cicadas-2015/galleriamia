@@ -1,9 +1,5 @@
 class FriendsController < ApplicationController
 
-  def show
-
-  end
-
   def new
     @friend = User.find_by(id: params[:user_id])
     @user = User.find_by(id: session[:user_id])
@@ -19,8 +15,4 @@ class FriendsController < ApplicationController
     redirect_to @friend
   end
 
-  private
-  def friend_params
-
-  end
 end
