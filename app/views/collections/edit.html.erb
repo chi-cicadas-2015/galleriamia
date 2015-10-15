@@ -16,10 +16,21 @@
 
       <%= form_for :collection, url: user_collection_path(current_user.id, @collection.id), method: :put, :html => { :multipart => true } do |f| %>
 
-        <%= render 'form', locals: { f: f } %>
+        <div>
+          <h5>Name</h5>
+          <%= f.text_field :name, required: true %>
+        </div>
+
+        <div>
+          <h5>Description</h5>
+          <%= f.text_field :description %>
+        </div>
+
+        <div>
+          <%= f.submit "Submit", class: "custom-button"%>
+        </div>
 
       <% end %>
-    <br>
 
     <div>
       <%= link_to "Delete Collection", user_collection_path(current_user.id, @collection.id), method: :delete %>
