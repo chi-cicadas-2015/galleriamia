@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   include ApplicationHelper
+  before_action :authorize, :authorized_for_user_actions, only: [:edit, :update]
+
 
   def show
     @user = User.find_by(id: params[:id])
@@ -34,8 +36,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    @profile = Profile.find_by(user_id: @user.id)
+      @user = User.find(params[:id])
+      @profile = Profile.find_by(user_id: @user.id)
   end
 
   def update

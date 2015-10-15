@@ -15,17 +15,17 @@
     <%= form_for :collection, url: user_collection_path(current_user.id, @collection.id), method: :put, :html => { :multipart => true } do |f| %>
 
       <div>
-        <%= f.label :name, "Name" %><br>
+        <h5>Name</h5>
         <%= f.text_field :name, required: true %>
       </div>
 
       <div>
-        <%= f.label :description, "Description" %><br>
+        <h5>Description</h5>
         <%= f.text_field :description %>
       </div>
 
       <div>
-        <%= f.submit %>
+        <%= f.submit "Submit", class: "custom-button"%>
       </div>
 
     <% end %>
