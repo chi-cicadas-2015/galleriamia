@@ -31,7 +31,7 @@
 
                 <% end %>
                 <div id="friend_link" class="btn btn-default">
-                  <% if current_user && current_user.artist %>
+                  <% if current_user %>
                     <%= link_to "Add Piece", new_user_collection_piece_path(@user.id, collection.id) %>
                   <% end %>
                 </div>
