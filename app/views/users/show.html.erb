@@ -30,6 +30,11 @@
                   <%= link_to image_tag(piece.photo.url(:thumb)), user_collection_piece_path(@user.id, collection.id, piece.id) %>
 
                 <% end %>
+                <div class="btn btn-default">
+                  <% if current_user.artist? %>
+                    <%= link_to "Add Piece", new_user_collection_piece_path(@user.id, collection.id) %>
+                  <% end %>
+                </div>
             </div>
           </li>
         <% end %>
@@ -71,7 +76,7 @@
                 <% end %>
                 <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
                 <% if current_user && current_user.id == @user.id %>
-                <button class="secondary-content btn-xs settings"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
+                <button id="edit_button" class="secondary-content btn-xs settings"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
                 <% end %>
               </div>
             </div>
@@ -81,27 +86,25 @@
         </div>
 
         <div class="col s12 m6">
-          <div class="card ">
-            <div class="card-content white-text">
-              <div class="media">
-                <div class="media-left">
-                </div>
+          <div id="friend_card" class="card">
+            <div class="card-content">
                 <div class="media-body">
-                  <h5 class="card-title white-text">Artists I Follow</h5>
-                  <div class="hline"></div>
+                  <h5 id="friend_text" class="card-title">Artists I Follow</h5>
+                  <div id="friend_line" class="hline"></div>
                 </div>
               </div>
 
-              <div id="info">
+              <div id="info_friends">
                 <% @friends.each do |friend| %>
-                  <%= link_to friend.friend.name, user_path(friend.friend.id) %><br>
+                  <h4 id="friend_link"><%= link_to friend.friend.name, user_path(friend.friend.id) %></h4>
+                  <br>
                 <% end %>
               </div>
             </div>
             <div class="card-action">
             </div>
           </div>
-          
+
       </div>
     </div>
   </div>
