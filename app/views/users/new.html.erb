@@ -12,22 +12,22 @@
     <%= form_for :user, url: users_path, :html => { :multipart => true } do |f| %>
 
       <div>
-        <%= f.label :name, "Name" %><br>
+        <h5>Name</h5>
         <%= f.text_field :name, required: true %>
       </div>
 
       <div>
-        <%= f.label :email, "Email" %><br>
+        <h5>Email</h5>
         <%= f.email_field :email, required: true %>
       </div>
 
       <div>
-        <%= f.label :password, "Password" %><br>
+        <h5>Password</h5>
         <%= f.password_field :password, required: true %>
       </div>
 
       <div>
-        <%= f.label :avatar, "Choose Your Avatar" %>
+        <h5>Choose an Avatar</h5>
         <%= f.file_field :avatar %>
       </div>
 
@@ -37,7 +37,7 @@
       </div>
 
       <div>
-        <%= f.submit %>
+        <%= f.submit class: "custom-button" %>
       </div>
 
     <% end %>
