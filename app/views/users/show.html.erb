@@ -71,7 +71,7 @@
                 <% end %>
                 <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
                 <% if current_user && current_user.id == @user.id %>
-                <button class="secondary-content btn-xs settings"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
+                <button class="secondary-content btn-xs settings" id="edit_button"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
                 <% end %>
               </div>
             </div>
@@ -101,7 +101,7 @@
             <div class="card-action">
             </div>
           </div>
-          
+
       </div>
     </div>
   </div>
