@@ -32,9 +32,9 @@ feature "User features" do
 
     scenario "User selects the Sign Up option and creates an account" do
       visit new_user_path
-      fill_in "Name", :with => not_artist.name
-      fill_in "Email", :with => not_artist.email
-      fill_in "Password", :with => not_artist.password
+      fill_in "user_name", :with => not_artist.name
+      fill_in "user_email", :with => not_artist.email
+      fill_in "user_password", :with => not_artist.password
       click_button "Save User"
       expect(page).to have_text("Your account was saved successfully")
       expect(page).to have_content(not_artist.name)
@@ -48,8 +48,8 @@ feature "User features" do
 
       def user_logs_in(input_user)
         visit '/login'
-        fill_in "Email", :with => input_user.email
-        fill_in "Password", :with => input_user.password
+        fill_in "session_email", :with => input_user.email
+        fill_in "session_password", :with => input_user.password
         click_button("Save Session")
         visit user_path(input_user.id)
       end
@@ -57,6 +57,7 @@ feature "User features" do
       def click_about_then_edit_profile
         click_link('About')
         click_link('Edit Profile')
+        # click_button('edit_button')
       end
 
       def login_and_edit
@@ -71,11 +72,13 @@ feature "User features" do
       it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
         login_and_edit
         expect(page).to have_content("Edit Profile")
+        save_and_open_page
       end
 
       it "User can see prefilled name in the form" do
         login_and_edit
-        expect(page).to have_css('#user_name')
+        # save_and_open_page
+        expect(page).to have_css('user_name')
       end
 
       it "User can see prefilled email in the form" do
