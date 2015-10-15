@@ -1,3 +1,5 @@
+<h1>Add a Piece to '<%=@collection.name%>'</h1>
+
 <div>
   <% if @errors %>
     <ul class="errors">
@@ -15,9 +17,11 @@
         <%= f.file_field :photo %>
       </div>
 
-      <div>
-        <%= f.submit %>
-      </div>
+
+    <div>
+      <%= f.submit "Add Piece" %>
+    </div>
+
 
     <% end %>
   </div>
