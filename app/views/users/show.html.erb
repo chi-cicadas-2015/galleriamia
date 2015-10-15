@@ -1,7 +1,7 @@
 <body id="show">
 <div class="container">
   <div class="user-header">
-    <h1 class="col-xs-4 "><%=@user.name%></h1>
+    <h1 class="col-xs-4 " id="<%=@user.id%>"><%=@user.name%></h1>
     <h1 id="profile_avatar" class="col-xs-offset-3 col-sm-offset-6"><%= image_tag @user.avatar.url(:thumb) %></h1>
   </div>
 
@@ -98,7 +98,7 @@
 
               <div id="info_friends">
                 <% @friends.each do |friend| %>
-                  <h4 id="friend_link"><%= link_to friend.friend.name, user_path(friend.friend.id) %></h4>
+                  <h5 id="friend_link"><%= link_to friend.friend.name, user_path(friend.friend.id) %></h5>
                   <br>
                 <% end %>
               </div>
