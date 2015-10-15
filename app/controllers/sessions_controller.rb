@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
       flash[:message] = "Sign in successful"
       redirect_to artists_path
     else
-      @errors = @user.errors.full_messages
       render 'new'
     end
   end

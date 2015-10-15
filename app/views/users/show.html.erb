@@ -64,10 +64,8 @@
               <div id="info">
                 <div><i class="material-icons">email</i> <%= @user.email %></div>
                 <% if @user.artist? %>
-                  <!-- <div>Name: <%= @user.name %></div> -->
                   <div>Primary Medium: <%= @user.profile.primary_medium %></div>
                   <div>Website: <%= @user.profile.website_url %></div>
-                  <!-- <div>Headshot: <%= image_tag @user.profile.headshot.url(:thumb) %></div> -->
                 <% end %>
                 <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
                 <% if current_user && current_user.id == @user.id %>
@@ -101,7 +99,7 @@
             <div class="card-action">
             </div>
           </div>
-          
+
       </div>
     </div>
   </div>
