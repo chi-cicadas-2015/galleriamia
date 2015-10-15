@@ -12,7 +12,7 @@
 
     <div class="form-horizontal">
 
-    <legend>Edit Collection "<%=@collection.name%>"</legend>
+    <h1>Edit Collection "<%=@collection.name%>"</h1>
 
       <%= form_for :collection, url: user_collection_path(current_user.id, @collection.id), method: :put, :html => { :multipart => true } do |f| %>
 
