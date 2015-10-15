@@ -1,41 +1,15 @@
-<h1>the piece edit page</h1>
-
-
 <div>
+  <%= image_tag @piece.photo.url(:large) %>
   <%= @piece.title %>
-  <%= image_tag @piece.photo.url(:thumb) %>
   <div>
     <%= form_for :piece, url: user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :patch, :html => { :multipart => true } do |f| %>
 
-    <div>
-      <%= f.label :title, "Title" %><br>
-      <%= f.text_field :title %>
-    </div>
-
-    <div>
-      <%= f.label :year, "Year" %><br>
-      <%= f.text_field :year %>
-    </div>
-
-    <div>
-      <%= f.label :medium, "Medium" %><br>
-      <%= f.text_field :medium %>
-    </div>
-
-    <div>
-      <%= f.label :size, "Dimensions" %><br>
-      <%= f.text_field :size %>
-    </div>
-
-    <div>
-      <%= f.label :description, "Remarks" %><br>
-      <%= f.text_area :description %>
-    </div>
+      <%= render partial: 'form', locals: { f: f } %>
 
 
-    <div>
-      <%= f.submit %>
-    </div>
+      <div>
+        <%= f.submit %>
+      </div>
 
     <% end %>
   </div>
