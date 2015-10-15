@@ -70,55 +70,55 @@ feature "User features" do
 
       it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
         login_and_edit
-        expect(page).to have_content("the user's edit page")
+        expect(page).to have_content("Edit Profile")
       end
 
       it "User can see prefilled name in the form" do
         login_and_edit
-        expect(page).to have_field('Name', with: artist.name)
+        expect(page).to have_css('#user_name')
       end
 
       it "User can see prefilled email in the form" do
         login_and_edit
-        expect(page).to have_field('Email', with: artist.email)
+        expect(page).to have_css('#user_email')
       end
 
       it "User can see prefilled statement in the form" do
         login_and_edit
-        expect(page).to have_field('Statement', with: artist.statement)
+        expect(page).to have_css('#user_statement')
       end
 
       it "User can upload a new avatar" do
         login_and_edit
-        expect(page).to have_field('Avatar')
+        expect(page).to have_css('#user_avatar')
       end
 
       context "An artist can edit additional profile information" do
 
         it "Artist can edit the Top collection field" do
           login_and_edit
-          expect(page).to have_field('Top Collection')
+          expect(page).to have_css('#user_profile_attributes_top_collection')
         end
 
         it "Artist can edit the Website field" do
           login_and_edit
-          expect(page).to have_field('Website URL')
+          expect(page).to have_css('#user_profile_attributes_website_url')
         end
 
         it "Artist can edit the Primary Medium field" do
           login_and_edit
-          expect(page).to have_field('Primary Medium')
+          expect(page).to have_css('#user_profile_attributes_primary_medium')
         end
 
         it "Artist can edit the Headshot field" do
           login_and_edit
-          expect(page).to have_field('Headshot')
+          expect(page).to have_css('#user_profile_attributes_headshot')
         end
 
         it "Artist can edit the password field" do
           login_and_edit
-          expect(page).to have_field('Password')
-          expect(page).to have_field('Password Confirmation')
+          expect(page).to have_css('#user_password')
+          expect(page).to have_css('#user_password_confirmation')
         end
       end
 
@@ -126,8 +126,8 @@ feature "User features" do
 
         it "Artist changes the Email field" do
           login_and_edit
-          fill_in "Email", :with => "new_email@testing.com"
-          click_button "Save User"
+          fill_in "user_email", :with => "new_email@testing.com"
+          click_button "Save Changes"
           artist_post_save = User.find(artist.id)
           expect(artist.email).to_not eq(artist_post_save.email)
         end
