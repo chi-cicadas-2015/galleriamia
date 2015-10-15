@@ -12,27 +12,27 @@
     <%= form_for :profile, url: artist_details_user_path(@user), :html => { :multipart => true } do |f| %>
 
       <div>
-        <%= f.label :top_collection, "Top Collection" %><br>
+        <h5>Top Collection</h5>
         <%= f.text_field :top_collection %>
       </div>
 
       <div>
-        <%= f.label :website_url, "Website URL" %><br>
+        <h5>Website URL</h5>
         <%= f.text_field :website_url %>
       </div>
 
       <div>
-        <%= f.label :primary_medium, "Primary Medium" %><br>
+        <h5>Primary Medium</h5>
         <%= f.text_field :primary_medium %>
       </div>
 
       <div>
-        <%= f.label :headshot, "Choose Your Headshot" %>
+        <h5>Choose Your Headshot</h5>
         <%= f.file_field :headshot %>
       </div>
 
       <div>
-        <%= f.submit %>
+        <%= f.submit class: "custom-button"%>
       </div>
 
     <% end %>
