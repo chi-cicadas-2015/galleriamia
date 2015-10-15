@@ -31,7 +31,7 @@
 
                 <% end %>
                 <div id="friend_link" class="btn btn-default">
-                  <% if current_user.artist? %>
+                  <% if current_user && current_user.artist %>
                     <%= link_to "Add Piece", new_user_collection_piece_path(@user.id, collection.id) %>
                   <% end %>
                 </div>
@@ -55,9 +55,11 @@
             <div class="card-content white-text">
               <div class="media">
                 <div class="media-left">
-                  <a href="#">
-                    <div class="media-object"><%= image_tag @user.profile.headshot.url(:thumb) %></div>
-                  </a>
+                  <% if @user.artist %>
+                    <a href="#">
+                      <div class="media-object"><%= image_tag @user.profile.headshot.url(:thumb) %></div>
+                    </a>
+                  <% end %>
                 </div>
                 <div class="media-body">
                   <h5 class="card-title white-text">My Statement</h5>
