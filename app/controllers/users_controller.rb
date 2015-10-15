@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
 
   def index
     @artists = User.where(artist: true)
