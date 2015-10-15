@@ -1,7 +1,6 @@
-<h1>the user's edit page</h1>
+<h1>Edit User</h1>
 
 <div>
-  <%= @user.name %>
   <% if @errors %>
     <ul class="errors">
       <% @errors.each do |error| %>
@@ -14,22 +13,22 @@
     <%= form_for :user, url: user_path(@user), method: :patch do |f| %>
 
       <div>
-        <%= f.label :name, "Name" %><br>
+        <h5>Name</h5>
         <%= f.text_field :name %>
       </div>
 
       <div>
-        <%= f.label :email, "Email" %><br>
+        <h5>Email</h5>
         <%= f.email_field :email %>
       </div>
 
       <div>
-        <%= f.label :statement, "Statement" %><br>
+        <h5>Statement</h5>
         <%= f.text_field :statement %>
       </div>
 
       <div>
-        <%= f.label :avatar, "Avatar" %><br>
+        <h5>Avatar</h5>
         <%= f.file_field :avatar %>
       </div>
 
@@ -37,39 +36,39 @@
         <%= f.fields_for :profile_attributes, @user.profile do |builder| %>
 
           <div>
-            <%= builder.label :top_collection, "Top Collection" %><br>
+            <h5>Top Collection</h5>
             <%= builder.text_field :top_collection %>
           </div>
 
           <div>
-            <%= builder.label :website_url, "Website URL" %><br>
+            <h5>Website URL</h5>
             <%= builder.text_field :website_url %>
           </div>
 
           <div>
-            <%= builder.label :primary_medium, "Primary Medium" %><br>
+            <h5>Primary Medium</h5>
             <%= builder.text_field :primary_medium %>
           </div>
 
           <div>
-            <%= builder.label :headshot, "Headshot" %><br>
+            <h5>Headshot</h5>
             <%= builder.file_field :headshot %>
           </div>
         <% end %>
       <% end %>
 
       <div>
-        <%= f.label :password, "Password" %><br>
+        <h5>Password</h5>
         <%= f.password_field :password, placeholder: "Enter a new password here"%>
       </div>
 
       <div>
-        <%= f.label :password_confirmation, "Password Confirmation" %><br>
+        <h5>Password Confirmation</h5>
         <%= f.password_field :password_confirmation, placeholder: "Confirm your changed password" %>
       </div>
 
       <div>
-        <%= f.submit %>
+        <%= f.submit "Save User", class: "custom-button" %>
       </div>
 
     <% end %>
