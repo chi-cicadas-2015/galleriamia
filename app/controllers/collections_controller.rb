@@ -1,4 +1,6 @@
 class CollectionsController < ApplicationController
+  include ApplicationHelper
+  before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @collection = Collection.new
@@ -18,7 +20,7 @@ class CollectionsController < ApplicationController
   end
 
   def edit
-    @collection = Collection.find_by(id: params[:id])
+      @collection = Collection.find_by(id: params[:id])
   end
 
   def update

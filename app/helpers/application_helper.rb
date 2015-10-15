@@ -1,11 +1,17 @@
 module ApplicationHelper
 
+  def authenticated?
+    session[:user_id] != nil
+  end
+
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if authenticated?
   end
 
   def authorize
-    redirect_to login_path unless current_user
+    unless authenticated?
+      redirect_to login_path
+    end
   end
 
 end
