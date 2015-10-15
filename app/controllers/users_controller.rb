@@ -42,10 +42,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @old_avatar = @user.avatar
-    @old_headshot = @user.profile.headshot
 
     if @user.artist
-      update_artist(@user, @old_avatar, @old_headshot)
+      update_artist(@user, @old_avatar)
     else
       update_user(@user, @old_avatar)
     end
@@ -70,7 +69,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :statement, :artist, :avatar, profile_attributes: [:top_collection, :website_url, :primary_medium, :headshot])
   end
 
-  def update_artist(user, avatar, headshot)
+  def update_artist(user, avatar)
     if user.update(artist_params)
       redirect_to user
     else
