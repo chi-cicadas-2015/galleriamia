@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get "/artist_details" => "profiles#new"
       post "/artist_details" => "profiles#create"
     end
+    resources :friends
     resources :collections do
       member do
         get '/add_to_collection' => "collections#allocate"
