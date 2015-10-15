@@ -1,0 +1,21 @@
+//// Splash Page ////
+
+#blur img {
+  -webkit-filter: blur(7px) grayscale(.5) opacity(.7);
+}
+
+#welcome_btn {
+  padding: 4px;
+  font-family: 'Righteous', sans-serif;
+  font-size: 2em;
+  margin-top: 205px;
+  text-align: center;
+  background-color: inherit;
+  color: white;
+  border: white solid 1px;
+}
+
+#spacey {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
