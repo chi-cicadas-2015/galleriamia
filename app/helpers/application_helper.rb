@@ -1,23 +1,37 @@
 module ApplicationHelper
 
+  def authenticated?
+    session[:user_id] != nil
+  end
+
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if authenticated?
   end
 
   def authorize
-    redirect_to login_path unless current_user
-  end
-
-  def current_user?(user)
-    user == current_user
-  end
-
-  def correct_user
-    @user = User.find_by(id: params[:user_id])
-    unless current_user && current_user?(@user)
+    unless authenticated?
       redirect_to login_path
     end
   end
 
+  def authorized_for_user_actions
+    @user = User.find(params[:id])
+    unless current_user.id == @user.id
+      redirect_to login_path
+    end
+  end
 
+  def authorized_for_collection_actions
+    @collection = Collection.find_by(user_id: params[:user_id])
+    unless current_user.id == @collection.user_id
+      redirect_to login_path
+    end
+  end
+
+  def authorized_for_piece_actions
+    @piece = Piece.find_by(artist_id: params[:user_id])
+    unless current_user.id == @piece.artist_id
+      redirect_to login_path
+    end
+  end
 end

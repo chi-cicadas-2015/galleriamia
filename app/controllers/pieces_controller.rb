@@ -1,6 +1,6 @@
 class PiecesController < ApplicationController
   include ApplicationHelper
-  before_action :authorize, :correct_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authorize, :authorized_for_piece_actions, only: [:new, :create, :edit, :update, :destroy]
 
   def show
     @user = User.find_by(id: params[:user_id])

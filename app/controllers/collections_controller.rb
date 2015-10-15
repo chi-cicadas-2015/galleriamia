@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   include ApplicationHelper
-  before_action :authorize, :correct_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authorize, :authorized_for_collection_actions, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @collection = Collection.new
