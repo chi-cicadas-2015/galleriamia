@@ -1,13 +1,17 @@
-<div>
-  <h5>Name</h5>
-  <%= f.text_field :name, required: true %>
-</div>
+<%= form_for [@current_user, @collection], :html => { :multipart => true } do |f| %>
 
-<div>
-  <h5>Description</h5>
-  <%= f.text_field :description %>
-</div>
+  <div>
+    <h5>Name</h5>
+    <%= foo.text_field :name, required: true %>
+  </div>
 
-<div>
-  <%= f.submit "Submit", class: "custom-button"%>
-</div>
+  <div>
+    <h5>Description</h5>
+    <%= foo.text_field :description %>
+  </div>
+
+  <div>
+    <%= foo.submit "Submit", class: "custom-button"%>
+  </div>
+
+<% end %>
