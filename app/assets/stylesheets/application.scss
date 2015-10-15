@@ -1,92 +1,92 @@
-@import "materialize/components/color";
- $primary-color: color("blue", "lighten-2") !default;
-@import 'materialize';
-
-
-
-
-body{
-  background-color: #B1BABF;
-}
-
-#show{
-  font-family: 'Righteous', sans-serif;
-}
-
-
-nav{
-  background-color: gray;
-}
-
-// .collapsible-header{
-//   font-size: 2em;
+// @import "materialize/components/color";
+//  $primary-color: color("blue", "lighten-2") !default;
+// @import 'materialize';
+//
+//
+//
+//
+// body{
+//   background-color: #B1BABF;
 // }
-
-.settings{
-  background-color: gray;
-  margin-top: 4px;
-  padding-left: 4px;
-}
-
-
-
-.icon{
-    position: relative;
-    bottom: 3px;
-}
-
-#blur img {
-  -webkit-filter: blur(7px) grayscale(.5) opacity(.7);
-}
-// .tabs a{
-//   font-size: 2em;
+//
+// #show{
+//   font-family: 'Righteous', sans-serif;
 // }
-
-#welcome_btn {
-  padding: 4px;
-  font-family: 'Righteous', sans-serif;
-  font-size: 2em;
-  margin-top: 205px;
-  text-align: center;
-  background-color: inherit;
-  color: white;
-  border: white solid 1px;
-}
-
-#spacey {
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-
-@media (max-width: 767px) {
-  nav {
-    display: none;
-  }
-}
-
-@media (min-width: 767px) {
-  footer {
-    display: none;
-
-  }
-}
-
-footer {
-   position:fixed;
-   left:0px;
-   bottom:0px;
-   height: 100px;
-   width:100%;
-   background:#999;
-}
-footer h5{
-  display: inline;
-}
-
-#foot_link li{
-  display: inline-block;
-}
-
-#add{
-  width: 1em;
-}
+//
+//
+// nav{
+//   background-color: gray;
+// }
+//
+// // .collapsible-header{
+// //   font-size: 2em;
+// // }
+//
+// .settings{
+//   background-color: gray;
+//   margin-top: 4px;
+//   padding-left: 4px;
+// }
+//
+//
+//
+// .icon{
+//     position: relative;
+//     bottom: 3px;
+// }
+//
+// #blur img {
+//   -webkit-filter: blur(7px) grayscale(.5) opacity(.7);
+// }
+// // .tabs a{
+// //   font-size: 2em;
+// // }
+//
+// #welcome_btn {
+//   padding: 4px;
+//   font-family: 'Righteous', sans-serif;
+//   font-size: 2em;
+//   margin-top: 205px;
+//   text-align: center;
+//   background-color: inherit;
+//   color: white;
+//   border: white solid 1px;
+// }
+//
+// #spacey {
+//   margin-top: 100px;
+//   margin-bottom: 100px;
+// }
+//
+// @media (max-width: 767px) {
+//   nav {
+//     display: none;
+//   }
+// }
+//
+// @media (min-width: 767px) {
+//   footer {
+//     display: none;
+//
+//   }
+// }
+//
+// footer {
+//    position:fixed;
+//    left:0px;
+//    bottom:0px;
+//    height: 100px;
+//    width:100%;
+//    background:#999;
+// }
+// footer h5{
+//   display: inline;
+// }
+//
+// #foot_link li{
+//   display: inline-block;
+// }
+//
+// #add{
+//   width: 1em;
+// }
