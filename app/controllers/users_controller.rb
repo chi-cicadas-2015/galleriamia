@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   include ApplicationHelper
   before_action :authorize, :authorized_for_user_actions, only: [:edit, :update]
 
+
   def index
     @artists = User.where(artist: true)
   end
