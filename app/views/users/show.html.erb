@@ -44,9 +44,9 @@
             <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons icon_color">library_add</i></a>
           <% end %>
           <% if current_user && @user.artist && !current_user.friends.find_by(friend_id: @user.id)  %>
-            <a href="<%=new_user_friend_path(@user.id)%>"><i class="secondary-content medium material-icons icon_color">favorite_border</i></a>
+            <a href="<%=new_user_friend_path(@user.id)%>"><i class="follow secondary-content medium material-icons icon_color">favorite_border</i></a>
           <% elsif current_user && @user.artist %>
-            <a href="<%=edit_user_friend_path(@user.id, current_user.id)%>"><i class="secondary-content medium material-icons icon_color">favorite</i></a>
+            <a href="<%=edit_user_friend_path(@user.id, current_user.id)%>"><i class="unfollow secondary-content medium material-icons icon_color">favorite</i></a>
           <% end %>
         </div>
     </div>
