@@ -114,7 +114,6 @@ class UsersController < ApplicationController
 
   def update_artist(user, avatar, headshot)
     if params[:user][:profile_attributes].exclude?("headshot")
-      params[:user].merge!(avatar: avatar)
       params[:user][:profile_attributes].merge!(headshot: headshot)
     end
 
