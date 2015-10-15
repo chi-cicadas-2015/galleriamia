@@ -51,18 +51,18 @@ feature "User features" do
         fill_in "session_email", :with => input_user.email
         fill_in "session_password", :with => input_user.password
         click_button("Save Session")
-        visit user_path(input_user.id)
+
       end
 
-      def click_about_then_edit_profile
+      def click_about_then_edit_profile(input_user)
+        visit user_path(input_user.id)
         click_link('About')
         click_link('Edit Profile')
-        # click_button('edit_button')
       end
 
       def login_and_edit
         user_logs_in(artist)
-        click_about_then_edit_profile
+        click_about_then_edit_profile(artist)
       end
 
       def persist_non_user_to_database
@@ -72,13 +72,11 @@ feature "User features" do
       it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
         login_and_edit
         expect(page).to have_content("Edit Profile")
-        save_and_open_page
       end
 
       it "User can see prefilled name in the form" do
         login_and_edit
-        # save_and_open_page
-        expect(page).to have_css('user_name')
+        expect(page).to have_css('#user_name')
       end
 
       it "User can see prefilled email in the form" do
@@ -96,12 +94,13 @@ feature "User features" do
         expect(page).to have_css('#user_avatar')
       end
 
-      it "User tries to edit another profile, but can't due to authorization methods" do
-        login_and_edit
-        persist_non_user_to_database
-
-        visit user_path(not_artist)
+      xit "User tries to edit another profile, but can't due to authorization methods" do
+        # login_and_edit
         # save_and_open_page
+        persist_non_user_to_database
+        user_logs_in(not_artist)
+        visit edit_user_path(artist.id)
+        save_and_open_page
         expect(page).to have_css("session_email")
       end
 
