@@ -24,7 +24,6 @@ describe Event do
     end
 
     it "An event has a start time" do
-      p event.start_time.class
       expect(event.start_time).to be_a(ActiveSupport::TimeWithZone)
     end
 
