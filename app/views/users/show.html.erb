@@ -43,8 +43,10 @@
           <% if current_user && current_user.id == @user.id %>
             <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons icon_color">library_add</i></a>
           <% end %>
-          <% if current_user && @user.artist  %>
-            <a href="<%=new_user_friend_path(@user.id)%>"><i class="secondary-content medium material-icons icon_color">person_add</i></a>
+          <% if current_user && @user.artist && !current_user.friends.find_by(friend_id: @user.id)  %>
+            <a href="<%=new_user_friend_path(@user.id)%>"><i class="follow secondary-content medium material-icons icon_color">favorite_border</i></a>
+          <% elsif current_user && @user.artist %>
+            <a href="<%=edit_user_friend_path(@user.id, current_user.id)%>"><i class="unfollow secondary-content medium material-icons icon_color">favorite</i></a>
           <% end %>
         </div>
     </div>
@@ -71,10 +73,8 @@
               <div id="info">
                 <div><i class="material-icons">email</i> <%= @user.email %></div>
                 <% if @user.artist? %>
-                  <!-- <div>Name: <%= @user.name %></div> -->
                   <div>Primary Medium: <%= @user.profile.primary_medium %></div>
                   <div>Website: <%= @user.profile.website_url %></div>
-                  <!-- <div>Headshot: <%= image_tag @user.profile.headshot.url(:thumb) %></div> -->
                 <% end %>
                 <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
                 <% if current_user && current_user.id == @user.id %>
