@@ -71,7 +71,7 @@ feature "User features" do
 
       it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
         login_and_edit
-        expect(page).to have_content("Edit Profile")
+        expect(page).to have_content("Update Profile")
       end
 
       it "User can see prefilled name in the form" do
@@ -94,14 +94,10 @@ feature "User features" do
         expect(page).to have_css('#user_avatar')
       end
 
-      xit "User tries to edit another profile, but can't due to authorization methods" do
-        # login_and_edit
-        # save_and_open_page
-        persist_non_user_to_database
+      it "User tries to edit another profile, but can't due to authorization methods" do
         user_logs_in(not_artist)
         visit edit_user_path(artist.id)
-        save_and_open_page
-        expect(page).to have_css("session_email")
+        expect(current_path).to eq(login_path)
       end
 
       context "An artist can edit additional profile information" do

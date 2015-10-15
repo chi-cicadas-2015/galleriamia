@@ -1,7 +1,11 @@
-<h1>Art Events In Your City</h1>
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+  <h1>Art Events In Your City</h1>
 
-<%= form_tag(events_search_path, method: :get) do %>
-  <%= label_tag(:city, "City:") %>
-  <%= text_field_tag(:city) %>
-  <%= submit_tag("Search") %>
-<% end %>
+  <%= form_tag(events_search_path, method: :get) do %>
+    <h5>City</h5>
+    <%= text_field_tag(:city) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+</div>
+<div class="col-sm-1"></div>
