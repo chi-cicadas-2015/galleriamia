@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   include ApplicationHelper
   before_action :authorize, :authorized_for_user_actions, only: [:edit, :update]
 
-
   def show
     @user = User.find_by(id: params[:id])
     @collections = Collection.where(user_id: @user.id)
@@ -43,54 +42,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @old_avatar = @user.avatar
-    @old_headshot = @user.profile.headshot
 
     if @user.artist
-      update_artist(@user, @old_avatar, @old_headshot)
+      update_artist(@user, @old_avatar)
     else
       update_user(@user, @old_avatar)
     end
-
-
-    #if both are full
-    # if params[:user].include?("avatar") && params[:user][:profile_attributes].include?("headshot")
-    #   if @user.update(user_params)
-    #     redirect_to @user
-    #   else
-    #     @errors = @user.errors.full_messages
-    #     render 'edit'
-    #   end
-    # #if only avatar is empty
-    # elsif params[:user].exclude?("avatar") && params[:user][:profile_attributes].include?("headshot")
-    #   params[:user].merge!(avatar: @old_avatar)
-    #   if @user.update(user_params)
-    #     redirect_to @user
-    #   else
-    #     @errors = @user.errors.full_messages
-    #     render 'edit'
-    #   end
-    # #if only headshot is empty
-    # elsif params[:user].include?("avatar") && params[:user][:profile_attributes].exclude?("headshot")
-    #   params[:user][:profile_attributes].merge!(headshot: @old_headshot)
-    #   # raise params[:user][:profile_attributes].inspect
-    #   if @user.update(user_params)
-    #     redirect_to @user
-    #   else
-    #     @errors = @user.errors.full_messages
-    #     render 'edit'
-    #   end
-    # #if both are empty
-    # else
-    #   params[:user].merge!(avatar: @old_avatar)
-    #   params[:user][:profile_attributes].merge!(headshot: @old_headshot)
-    #   if @user.update(user_params)
-    #     redirect_to @user
-    #   else
-    #     @errors = @user.errors.full_messages
-    #     render 'edit'
-    #   end
-    # end
-
   end
 
   def random_artist
@@ -112,12 +69,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :statement, :artist, :avatar, profile_attributes: [:top_collection, :website_url, :primary_medium, :headshot])
   end
 
-  def update_artist(user, avatar, headshot)
-    if params[:user][:profile_attributes].exclude?("headshot")
-      params[:user].merge!(avatar: avatar)
-      params[:user][:profile_attributes].merge!(headshot: headshot)
-    end
-
+  def update_artist(user, avatar)
     if user.update(artist_params)
       redirect_to user
     else

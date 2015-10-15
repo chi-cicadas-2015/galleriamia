@@ -1,6 +1,6 @@
 <h1>Add a Piece to '<%=@collection.name%>'</h1>
-<div>
 
+<div>
   <% if @errors %>
     <ul class="errors">
       <% @errors.each do |error| %>
@@ -8,43 +8,20 @@
       <% end %>
     </ul>
   <% end %>
-
-
   <div class="new-piece-form">
     <%= form_for :piece, url: user_collection_pieces_path(@user.id, @collection.id), method: :post, :html => { :multipart => true } do |f| %>
 
-    <div>
-      <%= f.label :title, "Title" %><br>
-      <%= f.text_field :title, required: true %>
-    </div>
+      <%= render partial: 'form', locals: { f: f } %>
 
-    <div>
-      <%= f.label :size, "Size" %><br>
-      <%= f.text_field :size %>
-    </div>
+      <div>
+        <%= f.file_field :photo %>
+      </div>
 
-    <div>
-      <%= f.label :medium, "Medium" %><br>
-      <%= f.text_field :medium %>
-    </div>
 
-    <div>
-      <%= f.label :year, "Year" %><br>
-      <%= f.text_field :year %>
-    </div>
+      <div>
+        <%= f.submit "Add Piece", class: "custom-button" %>
+      </div>
 
-    <div>
-      <%= f.label :description, "Description" %><br>
-      <%= f.text_field :description %>
-    </div>
-
-    <div>
-      <%= f.file_field :photo %>
-    </div>
-
-    <div>
-      <%= f.submit "Add Piece" %>
-    </div>
 
     <% end %>
   </div>
