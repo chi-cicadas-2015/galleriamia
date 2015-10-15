@@ -12,6 +12,8 @@ gem 'faker'
 
 gem 'meetup_client'
 
+gem 'launchy'
+
 gem 'materialize-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
