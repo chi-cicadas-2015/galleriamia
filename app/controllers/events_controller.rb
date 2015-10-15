@@ -7,8 +7,7 @@ class EventsController < ApplicationController
   def search
     @city = params[:city]
     @art_events = art_event_results
-    @art_events_with_venues = remove_empty_venues(@art_events)
-    @results = refine_results(@art_events_with_venues, @city)
+    @results = refine_results(@art_events, @city)
   end
 
   private
@@ -19,20 +18,10 @@ class EventsController < ApplicationController
     return events["results"]
   end
 
-  def remove_empty_venues(events)
-    results = []
-    events.each do |event|
-      if event["venue"]
-        results << event
-      end
-    end
-    return results
-  end
-
   def refine_results(events, city)
     results = []
     events.each do |event|
-      if event["venue"]["city"].downcase == city.downcase
+      if event["venue"] && event["venue"]["city"].downcase == city.downcase
         results << event
       end
     end
