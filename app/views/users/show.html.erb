@@ -43,8 +43,10 @@
           <% if current_user && current_user.id == @user.id %>
             <a href="<%=new_user_collection_path(@user.id)%>"><i id="add" class="medium material-icons icon_color">library_add</i></a>
           <% end %>
-          <% if current_user && @user.artist  %>
-            <a href="<%=new_user_friend_path(@user.id)%>"><i class="secondary-content medium material-icons icon_color">person_add</i></a>
+          <% if current_user && @user.artist && !current_user.friends.find_by(friend_id: @user.id)  %>
+            <a href="<%=new_user_friend_path(@user.id)%>"><i class="secondary-content medium material-icons icon_color">favorite_border</i></a>
+          <% else %>
+            <a href="<%=new_user_friend_path(@user.id)%>"><i class="secondary-content medium material-icons icon_color">favorite</i></a>
           <% end %>
         </div>
     </div>
