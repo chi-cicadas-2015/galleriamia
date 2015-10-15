@@ -93,6 +93,15 @@ feature "User features" do
         expect(page).to have_css('#user_avatar')
       end
 
+      it "User tries to edit another profile, but can't due to authorization methods" do
+        login_and_edit
+        persist_non_user_to_database
+
+        visit user_path(not_artist)
+        # save_and_open_page
+        expect(page).to have_css("session_email")
+      end
+
       context "An artist can edit additional profile information" do
 
         it "Artist can edit the Top collection field" do

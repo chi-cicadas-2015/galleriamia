@@ -43,4 +43,12 @@ describe UsersController do
       expect(assigns(:user)).to be_a(User)
     end
   end
+
+  describe "GET #edit" do
+    it "User that is not signed in tries to edit someone else's profile" do
+      get :edit, id: van_gogh.id
+      expect(response).to be_success
+    end
+  end
+
 end
