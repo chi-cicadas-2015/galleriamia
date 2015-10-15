@@ -32,9 +32,9 @@ feature "User features" do
 
     scenario "User selects the Sign Up option and creates an account" do
       visit new_user_path
-      fill_in "Name", :with => not_artist.name
-      fill_in "Email", :with => not_artist.email
-      fill_in "Password", :with => not_artist.password
+      fill_in "user_name", :with => not_artist.name
+      fill_in "user_email", :with => not_artist.email
+      fill_in "user_password", :with => not_artist.password
       click_button "Save User"
       expect(page).to have_text("Your account was saved successfully")
       expect(page).to have_content(not_artist.name)
@@ -48,20 +48,21 @@ feature "User features" do
 
       def user_logs_in(input_user)
         visit '/login'
-        fill_in "Email", :with => input_user.email
-        fill_in "Password", :with => input_user.password
+        fill_in "session_email", :with => input_user.email
+        fill_in "session_password", :with => input_user.password
         click_button("Save Session")
-        visit user_path(input_user.id)
+
       end
 
-      def click_about_then_edit_profile
+      def click_about_then_edit_profile(input_user)
+        visit user_path(input_user.id)
         click_link('About')
         click_link('Edit Profile')
       end
 
       def login_and_edit
         user_logs_in(artist)
-        click_about_then_edit_profile
+        click_about_then_edit_profile(artist)
       end
 
       def persist_non_user_to_database
@@ -91,6 +92,16 @@ feature "User features" do
       it "User can upload a new avatar" do
         login_and_edit
         expect(page).to have_css('#user_avatar')
+      end
+
+      xit "User tries to edit another profile, but can't due to authorization methods" do
+        # login_and_edit
+        # save_and_open_page
+        persist_non_user_to_database
+        user_logs_in(not_artist)
+        visit edit_user_path(artist.id)
+        save_and_open_page
+        expect(page).to have_css("session_email")
       end
 
       context "An artist can edit additional profile information" do

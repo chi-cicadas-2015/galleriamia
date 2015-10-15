@@ -12,17 +12,17 @@
     <%= form_for :session do |f| %>
 
       <div>
-        <%= f.label :email, "Email" %><br>
+        <h5>Email</h5>
         <%= f.email_field :email, required: true %>
       </div>
 
       <div>
-        <%= f.label :password, "Password" %><br>
+        <h5>Password</h5>
         <%= f.password_field :password, required: true %>
       </div>
 
       <div>
-        <%= f.submit %>
+        <%= f.submit class: "custom-button" %>
       </div>
 
     <% end %>
