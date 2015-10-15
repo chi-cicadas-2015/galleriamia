@@ -70,7 +70,7 @@ feature "User features" do
 
       it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
         login_and_edit
-        expect(page).to have_content("Edit User")
+        expect(page).to have_content("Edit Profile")
       end
 
       it "User can see prefilled name in the form" do
@@ -127,7 +127,7 @@ feature "User features" do
         it "Artist changes the Email field" do
           login_and_edit
           fill_in "user_email", :with => "new_email@testing.com"
-          click_button "Save User"
+          click_button "Save Changes"
           artist_post_save = User.find(artist.id)
           expect(artist.email).to_not eq(artist_post_save.email)
         end
