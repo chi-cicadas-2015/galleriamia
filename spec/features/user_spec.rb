@@ -42,32 +42,31 @@ feature "User features" do
 
   end
 
+  def user_logs_in(input_user)
+    visit '/login'
+    fill_in "session_email", :with => input_user.email
+    fill_in "session_password", :with => input_user.password
+    click_button("Save Session")
+  end
+
+  def click_about_then_edit_profile(input_user)
+    visit user_path(input_user.id)
+    click_link('About')
+    click_link('Edit Profile')
+  end
+
+  def login_and_edit
+    user_logs_in(artist)
+    click_about_then_edit_profile(artist)
+  end
+
+  def persist_non_user_to_database
+    not_artist.save
+  end
+
   feature "User - Edit functionality" do
 
     context "User logs in" do
-
-      def user_logs_in(input_user)
-        visit '/login'
-        fill_in "session_email", :with => input_user.email
-        fill_in "session_password", :with => input_user.password
-        click_button("Save Session")
-
-      end
-
-      def click_about_then_edit_profile(input_user)
-        visit user_path(input_user.id)
-        click_link('About')
-        click_link('Edit Profile')
-      end
-
-      def login_and_edit
-        user_logs_in(artist)
-        click_about_then_edit_profile(artist)
-      end
-
-      def persist_non_user_to_database
-        not_artist.save
-      end
 
       it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
         login_and_edit
@@ -154,5 +153,28 @@ feature "User features" do
         end
       end
     end
+  end
+  
+  feature "User - Logout" do
+    context "User clicks the logout link" do
+
+      def logs_out
+        user_logs_in(artist)
+        visit user_path(artist)
+        click_link('Logout')
+      end
+
+      it "User is redirected to the artists page when logging out" do
+        logs_out
+        expect(current_path).to eq(artists_path)
+      end
+
+      it "User can see the Login link" do
+        logs_out
+        expect(current_path).to eq(artists_path)
+      end
+
+    end
+
   end
 end
