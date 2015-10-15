@@ -1,9 +1,5 @@
 class FriendsController < ApplicationController
 
-  def show
-
-  end
-
   def new
     @friend = User.find_by(id: params[:user_id])
     @user = User.find_by(id: session[:user_id])
@@ -12,12 +8,11 @@ class FriendsController < ApplicationController
     redirect_to @friend
   end
 
-  def destroy
-
+  def edit
+    @friend = User.find_by(id: params[:user_id])
+    @friendship = Friend.where(user_id: params[:id], friend_id: params[:user_id])
+    Friend.destroy(@friendship)
+    redirect_to @friend
   end
 
-  private
-  def friend_params
-
-  end
 end
