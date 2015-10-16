@@ -64,19 +64,19 @@
                   <% end %>
                 </div>
                 <div class="media-body">
-                  <h5 class="card-title white-text">My Statement</h5>
+                  <h5 class="card-title white-text">Artist Statement</h5>
                   <div class="hline"></div>
                   <p><%= @user.statement %></p>
                 </div>
               </div>
 
               <div id="info">
-                <div><i class="material-icons">email</i> <%= @user.email %></div>
                 <% if @user.artist? %>
                   <div>Primary Medium: <%= @user.profile.primary_medium %></div>
                   <div>Website: <%= @user.profile.website_url %></div>
                 <% end %>
                 <div>Member Since: <%= @user.created_at.strftime("%B %-d, %Y") %></div>
+                <div id="email_link"><a href="mailto:<%=@user.email%>" target="_top"><i class="material-icons">email</i></a></div>
                 <% if current_user && current_user.id == @user.id %>
                 <button id="edit_button" class="secondary-content btn-xs settings"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
                 <% end %>
