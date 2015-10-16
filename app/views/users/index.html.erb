@@ -12,7 +12,7 @@
             <div class="col-sm-2"><img src="<%= artist.avatar.url(:thumb) %>" alt=""></div>
             <div class="col-sm-8">
             <h3 id="user_links"><%= artist.name %></h3>
-            <p><%= artist.profile.primary_medium if artist.profile %></p>
+            <p id="prim_md"><%= artist.profile.primary_medium if artist.profile %></p>
             </div>
             <div class="col-sm-2">
             <% if artist.profile %>
