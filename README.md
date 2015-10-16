@@ -18,16 +18,19 @@ You can visit Galleria Mia on Heroku here... http://galleriamia.herokuapp.com   
 * Internet access
 
 #### External APIs and Libraries
-Google Maps
-Bootstrap
-Bootswatch
-Materialize-sprockets
+* Google Maps  
+* Bootstrap  
+* Bootswatch  
+* Materialize-sprockets  git  
+
 
 ### Getting Started 
 
-Visit our Heroku site! Or, if you have appropriate access you can run the app locally:
+Visit our Heroku site!  
+Or, if you have appropriate access you can run the app locally:
 
-1. Clone to local machine: git clone https:/github.com/chi-cicadas-2015/galleriamia
+1. Clone to local machine: 
+      git clone https:/github.com/chi-cicadas-2015/galleriamia
 2. Install dependencies: bundle
 3. Initialize database: rake db:reset
 4. Run server: rails s
