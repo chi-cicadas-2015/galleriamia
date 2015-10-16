@@ -5,7 +5,7 @@
   <%= form_tag(events_search_path, method: :get) do %>
     <h5>City</h5>
     <%= text_field_tag(:city) %>
-    <%= submit_tag("Search") %>
+    <%= submit_tag "Search", class: "custom-button" %>
   <% end %>
 </div>
 <div class="col-sm-1"></div>
