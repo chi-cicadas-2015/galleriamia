@@ -30,7 +30,7 @@ feature "User features" do
       expect(page).to have_link("Sign Up")
     end
 
-    scenario "User selects the Sign Up option and creates an account" do
+    scenario "User (non-artist) selects the Sign Up option and creates an account" do
       visit new_user_path
       fill_in "user_name", :with => not_artist.name
       fill_in "user_email", :with => not_artist.email
@@ -40,6 +40,24 @@ feature "User features" do
       expect(page).to have_content(not_artist.name)
     end
 
+    context "User (artist) selects the Sign Up option and creates an account" do
+
+      def signs_up_artist(input_name, input_password)
+        visit new_user_path
+        fill_in "user_name", :with => input_name
+        fill_in "user_email", :with => "van@gogh.com"
+        fill_in "user_password", :with => input_password
+        check("artist")
+        click_button "Save User"
+
+        return User.find_by(name: "Van Gogh")
+      end
+
+      it "Redirects the artist so we can get more information" do
+        user = signs_up_artist("Van Gogh", "testing1234")
+        expect(current_path).to eq(artist_details_user_path(user))
+      end
+    end
   end
 
   def user_logs_in(input_user)
@@ -154,7 +172,7 @@ feature "User features" do
       end
     end
   end
-  
+
   feature "User - Logout" do
     context "User clicks the logout link" do
 
@@ -173,8 +191,6 @@ feature "User features" do
         logs_out
         expect(current_path).to eq(artists_path)
       end
-
     end
-
   end
 end
