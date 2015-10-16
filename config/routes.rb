@@ -5,21 +5,20 @@ Rails.application.routes.draw do
       get "/artist_details" => "profiles#new"
       post "/artist_details" => "profiles#create"
     end
-    resources :friends
-    resources :collections do
+    resources :friends, only: [:new, :edit]
+    resources :collections, except: :index do
       member do
         get '/add_to_collection' => "collections#allocate"
       end
-      resources :pieces do
+      resources :pieces, except: :index do
         member do
           get '/add_to_collection' => "pieces#allocate"
         end
-        resources :tags
       end
     end
   end
 
-  resources :events, except: :show
+  resources :events, only: :index
   get '/events/search' => 'events#search', as: "events_search"
 
   get '/artists' => 'users#index'
