@@ -78,6 +78,9 @@
       <% end %>
     </div>
 
+    <div>
+      <%= link_to "Delete Your Account", user_path, method: :delete, data: { confirm: 'Are you sure?'} %>
+    </div>
   </div>
 </div>
 <div class="col-sm-1"></div>

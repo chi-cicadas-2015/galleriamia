@@ -56,6 +56,14 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    p @user
+    session.clear
+    redirect_to artists_path
+  end
+
   private
   def create_default_collection(user_id)
     Collection.create!(user_id: user_id, name: "Portfolio")
