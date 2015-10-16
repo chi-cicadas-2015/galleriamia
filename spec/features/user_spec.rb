@@ -30,6 +30,12 @@ feature "User features" do
       expect(page).to have_link("Sign Up")
     end
 
+    scenario "User clicks random artist and visits the artists page" do
+      artist.valid?
+      visit artists_random_path
+      expect(current_path).to eq(user_path(artist))
+    end
+
     scenario "User (non-artist) selects the Sign Up option and creates an account" do
       visit new_user_path
       fill_in "user_name", :with => not_artist.name
