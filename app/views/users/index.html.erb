@@ -1,26 +1,27 @@
 <div class="container">
+  <div class="col-sm-10">
 
-  <% if flash[:message] %>
-    <div class="message"><%= h flash[:message] %></div>
-  <% end %>
-
-
+    <% if flash[:message] %>
+      <div class="message"><%= h flash[:message] %></div>
+    <% end %>
 
     <ul class="container">
       <% @artists.each do |artist| %>
-
-      <li class="row table-bordered breadcrumb">
-        <div class="col-sm-2"><img src="<%= artist.avatar.url(:thumb) %>" alt=""></div>
-        <div class="col-sm-8">
-        <h3 id="user_links"><a href="<%=user_path(artist.id)%>"><%= artist.name %></a></h3>
-        <p><%= artist.profile.primary_medium if artist.profile %></p>
-        </div>
-        <div class="col-sm-2">
-        <% if artist.profile %>
-         <img src="<%= artist.profile.headshot.url(:thumb) %>" alt="">
-        <% end %>
-        </div>
-      </li>
+        <a href="<%=user_path(artist.id)%>">
+          <li class="col-sm-11 row table-bordered breadcrumb">
+            <div class="col-sm-2"><img src="<%= artist.avatar.url(:thumb) %>" alt=""></div>
+            <div class="col-sm-8">
+            <h3 id="user_links"><%= artist.name %></h3>
+            <p><%= artist.profile.primary_medium if artist.profile %></p>
+            </div>
+            <div class="col-sm-2">
+            <% if artist.profile %>
+             <img src="<%= artist.profile.headshot.url(:thumb) %>" alt="">
+            <% end %>
+            </div>
+          </li>
+        </a>
       <% end %>
     </ul>
+</div>
 </div>
