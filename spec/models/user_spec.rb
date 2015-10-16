@@ -129,6 +129,10 @@ describe User do
       expect(new_user.valid?).to be(false)
     end
 
+    it "User can't be saved without a name" do
+      expect(new_user.save).to eq(false)
+    end
+
     it "User without a name is receives appropriate message as feedback" do
       new_user.valid?
       expect(new_user.errors.messages[:name][0]).to eq("can't be blank")
@@ -164,5 +168,4 @@ describe User do
       expect(van_gogh.collections.first.pieces.first.title).to eq("This is A Test Piece")
     end
   end
-
 end
