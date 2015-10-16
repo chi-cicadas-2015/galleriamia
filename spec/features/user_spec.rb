@@ -32,9 +32,9 @@ feature "User features" do
 
     scenario "User selects the Sign Up option and creates an account" do
       visit new_user_path
-      fill_in "Name", :with => not_artist.name
-      fill_in "Email", :with => not_artist.email
-      fill_in "Password", :with => not_artist.password
+      fill_in "user_name", :with => not_artist.name
+      fill_in "user_email", :with => not_artist.email
+      fill_in "user_password", :with => not_artist.password
       click_button "Save User"
       expect(page).to have_text("Your account was saved successfully")
       expect(page).to have_content(not_artist.name)
@@ -48,20 +48,21 @@ feature "User features" do
 
       def user_logs_in(input_user)
         visit '/login'
-        fill_in "Email", :with => input_user.email
-        fill_in "Password", :with => input_user.password
+        fill_in "session_email", :with => input_user.email
+        fill_in "session_password", :with => input_user.password
         click_button("Save Session")
-        visit user_path(input_user.id)
+
       end
 
-      def click_about_then_edit_profile
+      def click_about_then_edit_profile(input_user)
+        visit user_path(input_user.id)
         click_link('About')
         click_link('Edit Profile')
       end
 
       def login_and_edit
         user_logs_in(artist)
-        click_about_then_edit_profile
+        click_about_then_edit_profile(artist)
       end
 
       def persist_non_user_to_database
@@ -70,55 +71,61 @@ feature "User features" do
 
       it "User clicks the 'Edit' button in the About tab and is redirected to the Edit Profile page" do
         login_and_edit
-        expect(page).to have_content("the user's edit page")
+        expect(page).to have_content("Update Profile")
       end
 
       it "User can see prefilled name in the form" do
         login_and_edit
-        expect(page).to have_field('Name', with: artist.name)
+        expect(page).to have_css('#user_name')
       end
 
       it "User can see prefilled email in the form" do
         login_and_edit
-        expect(page).to have_field('Email', with: artist.email)
+        expect(page).to have_css('#user_email')
       end
 
       it "User can see prefilled statement in the form" do
         login_and_edit
-        expect(page).to have_field('Statement', with: artist.statement)
+        expect(page).to have_css('#user_statement')
       end
 
       it "User can upload a new avatar" do
         login_and_edit
-        expect(page).to have_field('Avatar')
+        expect(page).to have_css('#user_avatar')
+      end
+
+      it "User tries to edit another profile, but can't due to authorization methods" do
+        user_logs_in(not_artist)
+        visit edit_user_path(artist.id)
+        expect(current_path).to eq(login_path)
       end
 
       context "An artist can edit additional profile information" do
 
         it "Artist can edit the Top collection field" do
           login_and_edit
-          expect(page).to have_field('Top Collection')
+          expect(page).to have_css('#user_profile_attributes_top_collection')
         end
 
         it "Artist can edit the Website field" do
           login_and_edit
-          expect(page).to have_field('Website URL')
+          expect(page).to have_css('#user_profile_attributes_website_url')
         end
 
         it "Artist can edit the Primary Medium field" do
           login_and_edit
-          expect(page).to have_field('Primary Medium')
+          expect(page).to have_css('#user_profile_attributes_primary_medium')
         end
 
         it "Artist can edit the Headshot field" do
           login_and_edit
-          expect(page).to have_field('Headshot')
+          expect(page).to have_css('#user_profile_attributes_headshot')
         end
 
         it "Artist can edit the password field" do
           login_and_edit
-          expect(page).to have_field('Password')
-          expect(page).to have_field('Password Confirmation')
+          expect(page).to have_css('#user_password')
+          expect(page).to have_css('#user_password_confirmation')
         end
       end
 
@@ -126,8 +133,8 @@ feature "User features" do
 
         it "Artist changes the Email field" do
           login_and_edit
-          fill_in "Email", :with => "new_email@testing.com"
-          click_button "Save User"
+          fill_in "user_email", :with => "new_email@testing.com"
+          click_button "Save Changes"
           artist_post_save = User.find(artist.id)
           expect(artist.email).to_not eq(artist_post_save.email)
         end

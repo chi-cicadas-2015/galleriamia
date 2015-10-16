@@ -2,15 +2,14 @@ class UsersController < ApplicationController
   include ApplicationHelper
   before_action :authorize, :authorized_for_user_actions, only: [:edit, :update]
 
-
-  def index
-    @artists = User.where(artist: true)
-  end
-
   def show
     @user = User.find_by(id: params[:id])
     @collections = Collection.where(user_id: @user.id)
     @friends = Friend.where(user_id: @user.id)
+  end
+
+  def index
+    @artists = User.where(artist: true)
   end
 
   def new
@@ -43,47 +42,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @old_avatar = @user.avatar
-    @old_headshot = @user.profile.headshot
 
-    #if both are full
-    if params[:user].include?("avatar") && params[:user][:profile_attributes].include?("headshot")
-      if @user.update(user_params)
-        redirect_to @user
-      else
-        @errors = @user.errors.full_messages
-        render 'edit'
-      end
-    #if only avatar is empty
-    elsif params[:user].exclude?("avatar") && params[:user][:profile_attributes].include?("headshot")
-      params[:user].merge!(avatar: @old_avatar)
-      if @user.update(user_params)
-        redirect_to @user
-      else
-        @errors = @user.errors.full_messages
-        render 'edit'
-      end
-    #if only headshot is empty
-    elsif params[:user].include?("avatar") && params[:user][:profile_attributes].exclude?("headshot")
-      params[:user][:profile_attributes].merge!(headshot: @old_headshot)
-      # raise params[:user][:profile_attributes].inspect
-      if @user.update(user_params)
-        redirect_to @user
-      else
-        @errors = @user.errors.full_messages
-        render 'edit'
-      end
-    #if both are empty
+    if @user.artist
+      update_artist(@user, @old_avatar)
     else
-      params[:user].merge!(avatar: @old_avatar)
-      params[:user][:profile_attributes].merge!(headshot: @old_headshot)
-      if @user.update(user_params)
-        redirect_to @user
-      else
-        @errors = @user.errors.full_messages
-        render 'edit'
-      end
+      update_user(@user, @old_avatar)
     end
-
   end
 
   def random_artist
@@ -92,15 +56,43 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    p @user
+    session.clear
+    redirect_to artists_path
+  end
+
   private
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :statement, :artist, :avatar, profile_attributes: [:top_collection, :website_url, :primary_medium, :headshot])
+  def create_default_collection(user_id)
+    Collection.create!(user_id: user_id, name: "Portfolio")
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :statement, :artist, :avatar)
+  end
+
+  def artist_params
+    params.require(:user).permit(:name, :email, :password, :statement, :artist, :avatar, profile_attributes: [:top_collection, :website_url, :primary_medium, :headshot])
+  end
+
+  def update_artist(user, avatar)
+    if user.update(artist_params)
+      redirect_to user
+    else
+      @errors = user.errors.full_messages
+      render 'edit'
     end
+  end
 
-
-
-    def create_default_collection(user_id)
-      Collection.create!(user_id: user_id, name: "Portfolio")
+  def update_user(user, avatar)
+    if user.update(user_params)
+      redirect_to user
+    else
+      @errors = user.errors.full_messages
+      render 'edit'
     end
+  end
 
 end

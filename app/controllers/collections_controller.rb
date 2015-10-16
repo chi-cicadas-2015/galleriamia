@@ -36,11 +36,9 @@ class CollectionsController < ApplicationController
   end
 
   def destroy
-
     @user = User.find_by(id: params[:user_id])
     @collection = Collection.find_by(id: params[:id])
     @collection.destroy
-
     redirect_to user_path(@user.id)
   end
 

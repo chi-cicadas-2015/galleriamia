@@ -1,51 +1,33 @@
-<h1>the pieces/new form </h1>
-<div>
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+  <h1>Add a Piece to '<%=@collection.name%>'</h1>
 
-  <% if @errors %>
-    <ul class="errors">
-      <% @errors.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-
-  <div class="new-piece-form">
-    <%= form_for :piece, url: user_collection_pieces_path(@user.id, @collection.id), method: :post, :html => { :multipart => true } do |f| %>
-
-    <div>
-      <%= f.label :title, "Title" %><br>
-      <%= f.text_field :title, required: true %>
-    </div>
-
-    <div>
-      <%= f.label :size, "Size" %><br>
-      <%= f.text_field :size %>
-    </div>
-
-    <div>
-      <%= f.label :medium, "Medium" %><br>
-      <%= f.text_field :medium %>
-    </div>
-
-    <div>
-      <%= f.label :year, "Year" %><br>
-      <%= f.text_field :year %>
-    </div>
-
-    <div>
-      <%= f.label :description, "Description" %><br>
-      <%= f.text_field :description %>
-    </div>
-
-    <div>
-      <%= f.file_field :photo %>
-    </div>
-
-    <div>
-      <%= f.submit %>
-    </div>
-
+  <div>
+    <% if @errors %>
+      <ul class="errors">
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
     <% end %>
+
+    <div class="new-piece-form ">
+      <%= form_for :piece, url: user_collection_pieces_path(@user.id, @collection.id), method: :post, :html => { :multipart => true } do |f| %>
+
+        <%= render partial: 'form', locals: { f: f } %>
+
+        <div>
+          <%= f.file_field :photo %>
+        </div>
+
+
+        <div>
+          <%= f.submit "Add Piece", class: "custom-button" %>
+        </div>
+
+
+      <% end %>
+    </div>
   </div>
 </div>
+<div class="col-sm-1"></div>

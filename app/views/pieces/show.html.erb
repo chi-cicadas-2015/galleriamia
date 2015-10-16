@@ -1,44 +1,50 @@
 <div class="container">
 
-  <div>
+  <div class="col-md-1"></div>
+
+  <div class="col-md-4">
     <img class="materialboxed" src="<%=@piece.photo.url(:large)%>">
   </div>
 
-  <div>
-    Title: "<%= @piece.title %>"
-  </div>
+  <div class="col-md-1"></div>
 
-  <div>
-    Year: <%= @piece.year %>
-  </div>
-
-  <div>
-    Medium: <%= @piece.medium %>
-  </div>
-
-  <div>
-    Dimensions: <%= @piece.size %>
-  </div>
-
-  <div>
-    Remarks: <%= @piece.description %>
-  </div>
-
-  <% if current_user && current_user.artist == nil %>
+  <div class="col-md-4">
     <div>
-      <%= link_to 'Curate Item', add_to_collection_user_collection_piece_path(current_user.id, @collection.id, @piece.id), id: "addToCollection" %>
+      Title: "<%= @piece.title %>"
     </div>
-  <% end %>
 
-  <% if current_user && current_user.id == @user.id && current_user.artist == true %>
     <div>
-      <%= link_to 'Edit', edit_user_collection_piece_path(@user.id, @collection.id, @piece.id) %> |
-      <%= link_to 'Delete', user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :delete %>
+      Year: <%= @piece.year %>
     </div>
-  <% end %>
 
-  <div id="addCollections">
+    <div>
+      Medium: <%= @piece.medium %>
+    </div>
 
+    <div>
+      Dimensions: <%= @piece.size %>
+    </div>
+
+    <div>
+      Remarks: <%= @piece.description %>
+    </div>
+
+    <% if current_user && current_user.artist == nil %>
+      <div>
+        <%= link_to 'Curate Item', add_to_collection_user_collection_piece_path(current_user.id, @collection.id, @piece.id), id: "addToCollection" %>
+      </div>
+    <% end %>
+
+    <% if current_user && current_user.id == @user.id && current_user.artist == true %>
+      <div>
+        <%= link_to 'Edit', edit_user_collection_piece_path(@user.id, @collection.id, @piece.id) %> |
+        <%= link_to 'Delete', user_collection_piece_path(@user.id, @collection.id, @piece.id), method: :delete %>
+      </div>
+    <% end %>
+
+    <div id="addCollections"></div>
+
+    <%= link_to "Back", user_path(@user.id) %>
   </div>
-
+  <div class="col-md-2"></div>
 </div>
