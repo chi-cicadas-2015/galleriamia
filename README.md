@@ -21,7 +21,8 @@ You can visit Galleria Mia on Heroku here... http://galleriamia.herokuapp.com   
 * Google Maps  
 * Bootstrap  
 * Bootswatch  
-* Materialize-sprockets  git 
+* Materialize-sprockets  git  
+
 
 ### Getting Started 
 
