@@ -8,17 +8,21 @@
 </div>
 <div class="col-md-1"></div>
 <div class="col-md-5">
-<ul class="collapsible" data-collapsible="expandable">
-  <% @results.each do |result| %>
-    <li>
-      <div class="collapsible-header">
-        <div class="location" id="<%=result["venue"]["lat"]%>,<%=result["venue"]["lon"]%>"><a href="<%=result["event_url"]%>"><%= result["name"] %></a></div>
-        <div><%="#{result["venue"]["name"]} | #{result["venue"]["address_1"]} | #{result["venue"]["city"]} #{result["venue"]["state"]}"%></div>
-      </div>
-      <div class="collapsible-body">
-        <div><%=result["description"].html_safe%></div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<% if !@results.empty? %>
+  <ul class="collapsible" data-collapsible="expandable">
+    <% @results.each do |result| %>
+      <li>
+        <div class="collapsible-header">
+          <div class="location" id="<%=result["venue"]["lat"]%>,<%=result["venue"]["lon"]%>"><a href="<%=result["event_url"]%>"><%= result["name"] %></a></div>
+          <div><%="#{result["venue"]["name"]} | #{result["venue"]["address_1"]} | #{result["venue"]["city"]} #{result["venue"]["state"]}"%></div>
+        </div>
+        <div class="collapsible-body">
+          <div><%=result["description"].html_safe%></div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>Sorry, no results found.</h3>
+<% end %>
 </div>

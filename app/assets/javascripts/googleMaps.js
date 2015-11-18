@@ -9,7 +9,6 @@ function googleMaps() {
     var allLatlng = getLatlngs(allIds);
     var mapCanvas = document.getElementById('map');
 
-
     var mapOptions = {
       zoom: 8,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
