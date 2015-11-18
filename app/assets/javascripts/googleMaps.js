@@ -1,5 +1,9 @@
 function googleMaps() {
   function initialize() {
+    var cityCoordinates = document.getElementsByClassName('city')[0].id;
+    var cityLat = Number(cityCoordinates.split(",")[0]);
+    var cityLng = Number(cityCoordinates.split(",")[1]);
+
     var allElements = document.getElementsByClassName('location');
     var allIds = getIds(allElements);
     var allLatlng = getLatlngs(allIds);
@@ -7,8 +11,8 @@ function googleMaps() {
 
     var mapOptions = {
       zoom: 8,
-      center: allLatlng[0],
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: {lat: cityLat, lng: cityLng}
     };
 
     var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -16,8 +20,7 @@ function googleMaps() {
     var markers = [];
     for (i = 0; i < allLatlng.length; i++) {
       var marker = new google.maps.Marker({
-        position: allLatlng[i],
-        title: "Hello World!"
+        position: allLatlng[i]
       });
       marker.setMap(map);
     };
